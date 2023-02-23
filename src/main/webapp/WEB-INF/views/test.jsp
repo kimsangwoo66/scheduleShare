@@ -12,6 +12,8 @@
 	<head> 
     	<meta charset="utf-8">
     <title>웹페이지 제목</title>
+    <title>브렌치 테스트</title>
+
 	</head>
 
 	<body>
