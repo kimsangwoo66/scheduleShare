@@ -7,13 +7,15 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-        <div>
-                <br/>
-                <br/>
-        </div>
-        <div class="jumbotron text-center" style="margin-bottom:0">
-            <p>Footer</p>
-        </div>
+
+            <div>
+                    <br/>
+                    <br/>
+            </div>
+            <div class="jumbotron text-center" style="margin-bottom:0">
+                <p>Footer</p>
+            </div>
+
     </body>
 
 

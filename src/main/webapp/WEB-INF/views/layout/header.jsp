@@ -115,6 +115,11 @@
             align-items: center;
             justify-content: center;
         }
+
+
+        .logo-back {
+        background-color: yellow; padding:10px;
+        }
      </style>
 </head>
 
@@ -141,13 +146,13 @@
                           <div class="col-8">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">홈</a>
+                                        <a class="nav-link" href="/main">홈</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">카테고리</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">스케줄</a>
+                                        <a class="nav-link" href="/schedules/kate">스케줄 생성</a>
                                     </li>
                                 </ul>
                           </div>
@@ -155,10 +160,17 @@
                           <div class="col-4">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">하트 스케줄함</a>
+                                        <a class="nav-link" href="/schedule/heartbox"><i class="fas fa-heart"></i>스케줄함</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">로그인</a>
+                                        <a class="nav-link" href="/schedule/mybox">마이스케줄함</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/auth/login">로그인</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/auth/join">회원가입</a>
                                     </li>
                                 </ul>
                           </div>
@@ -169,13 +181,13 @@
                             <div class="col-8">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">홈</a>
+                                        <a class="nav-link" href="/main">홈</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">카테고리</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">스케줄 생성</a>
+                                        <a class="nav-link" href="/schedules/kate">스케줄 생성</a>
                                     </li>
 
                                 </ul>
@@ -184,16 +196,16 @@
                             <div class="col-4">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">하트스케줄</a>
+                                        <a class="nav-link" href="/schedule/heartbox"><i class="fas fa-heart"></i>스케줄함</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">마이스케줄</a>
+                                        <a class="nav-link" href="/schedule/mybox"></i>마이스케줄함</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">마이페이지</a>
+                                        <a class="nav-link" href="/user/myinfo">마이페이지</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">로그아웃</a>
+                                        <a class="nav-link" href="/logout">로그아웃</a>
                                     </li>
                                 </ul>
 
@@ -202,32 +214,6 @@
                         </c:otherwise>
             </c:choose>
 
-
-                <div class="col-8">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">홈</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">카테고리</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">스케줄</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-4">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">하트 스케줄함</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">로그인</a>
-                        </li>
-                    </ul>
-                </div>
-        </div>
     </nav>
 
     <div>
