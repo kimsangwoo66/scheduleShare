@@ -22,5 +22,10 @@ public class scheduleController {
       return "schedule/saveForm";
     }
 
+    //스케줄 등록
+    @GetMapping("/selectCategory")
+    public String SelectCategory(){
+        return "schedule/selectCategory";
+    }
 
 }
