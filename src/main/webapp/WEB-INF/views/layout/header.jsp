@@ -133,7 +133,7 @@
 
 <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">로고</a>
+        <a class="navbar-brand" href="/main">로고</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
