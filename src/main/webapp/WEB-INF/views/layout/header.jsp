@@ -120,6 +120,20 @@
         .logo-back {
         background-color: yellow; padding:10px;
         }
+        <!-- myPage사용 -->
+        .btn-upload {
+                width: 150px;
+                height: 30px;
+                background: #fff;
+                border: 1px solid rgb(77,77,77);
+                border-radius: 10px;
+                font-weight: 500;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+        }
      </style>
 </head>
 
@@ -152,7 +166,7 @@
                                         <a class="nav-link" href="#">카테고리</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/schedules/kate">스케줄 생성</a>
+                                        <a class="nav-link" href="/selectCategory">스케줄 생성</a>
                                     </li>
                                 </ul>
                           </div>
@@ -160,10 +174,11 @@
                           <div class="col-4">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/schedule/heartbox"><i class="fas fa-heart"></i>스케줄함</a>
+                                        <a class="nav-link" href="/myHeartList">
+                                        <i class="fas fa-heart"></i>스케줄함</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/schedule/mybox">마이스케줄함</a>
+                                        <a class="nav-link" href="/myList">마이스케줄함</a>
                                     </li>
 
                                     <li class="nav-item">
@@ -187,7 +202,7 @@
                                         <a class="nav-link" href="#">카테고리</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/schedules/kate">스케줄 생성</a>
+                                        <a class="nav-link" href="/selectCategory">스케줄 생성</a>
                                     </li>
 
                                 </ul>
@@ -196,13 +211,14 @@
                             <div class="col-4">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/schedule/heartbox"><i class="fas fa-heart"></i>스케줄함</a>
+                                        <a class="nav-link" href="/myHeartList">
+                                        <i class="fas fa-heart"></i>스케줄함</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/schedule/mybox"></i>마이스케줄함</a>
+                                        <a class="nav-link" href="/myList"></i>마이스케줄함</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/user/myinfo">마이페이지</a>
+                                        <a class="nav-link" href="/myPage">마이페이지</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/logout">로그아웃</a>
