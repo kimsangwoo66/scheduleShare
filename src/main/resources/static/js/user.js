@@ -68,14 +68,7 @@ let index = {
                                     $("#valid_username").text("");
                                   }
 
-                                  if(response.data.hasOwnProperty("valid_gender"))
-                                  {
-                                    $("#valid_gender").text(response.data.valid_gender);
-                                    $("#valid_gender").css('color', 'red');
-                                  }
-                                  else{
-                                    $("#valid_gender").text("");
-                                  }
+
 
                                 }
                                 else{
