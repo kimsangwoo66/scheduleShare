@@ -14,36 +14,41 @@
             <div class="card-body">
             <h4 class="card-title">회원가입</h4>
         </div>
+
         <form>
-			<div id="joinaction">
-				<p id="joinid" class="joinus"> <!-- 아이디 입력창 -->
-					<span class="joinM">이메일</span>
-                    <br>
-					<input type="email" name="email" id="email"> <span hidden>이미 존재</span>
-				</p>
-				<p id="joinpassword" class="joinus"> <!-- 비밀번호 입력창 -->
-					<span class="joinM">비밀번호</span>
-                    <br>
-                    <span class="joinM">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요</span>
-					<input type="password" id="password" name="password" class="jpw1" placeholder="비밀번호를 입력해주세요.">
-                    <br>
-                    <br>
-                    <span>비밀번호 확인</span>
-                    <br>
-                    <input type="password" id="pwcheck" name="pwcheck" class="jpw2" placeholder="비밀번호 확인">
-				</p>
-				<p> <!-- 닉네임 입력창 -->
-					<span class="joinM">닉네임</span>
-                    <br>
-					<input type="text" name="username" id="username" placeholder="별명 (2~15자)">
-				</p>
-				<p> <!-- 성별 입력  -->
-					<span class="joinM">성별</span>
-                    <br>
-                    <input type="radio" id="gender" name="gender" value=1> <span>남자</span>
-                    &nbsp; &nbsp; &nbsp; &nbsp;
-                    <input type="radio" id="gender" name="gender" value=2><span>여자</span>
-				</p>
+			<div>
+			    <!-- 이메일 입력창 -->
+                <span>이메일</span>
+                <br>
+                <input type="email" name="email" id="email">
+                <p id="valid_email"></p>
+
+
+                <!-- 비밀번호 입력창 -->
+                <span>비밀번호</span>
+                <br>
+                <input type="password" id="password" name="password" class="jpw1" placeholder="비밀번호를 입력해주세요.">
+                <br>
+                <br>
+                <span>비밀번호 확인</span>
+
+                <br>
+                <input type="password" id="pwcheck" name="pwcheck" class="jpw2" placeholder="비밀번호 확인">
+                 <p id="valid_password"></p>
+
+				<!-- 닉네임 입력창 -->
+                <span>닉네임</span>
+                <br>
+                <input type="text" name="username" id="username" placeholder="별명 (2~15자)">
+				<p id="valid_username"></p>
+
+				<!-- 성별 입력  -->
+                <span>성별</span>
+                <br>
+                <input type="radio" id="gender" name="gender" value=1 checked><span>남자</span>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <input type="radio" id="gender" name="gender" value=2><span>여자</span>
+				<p id="valid_gender"></p>
 			</div>
         </form>
 

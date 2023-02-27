@@ -22,7 +22,7 @@ public class PrincipalDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User principal = userRepository.findByEmail(email)
                 .orElseThrow(() -> {
-                    return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다. " + email);
+                    return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다." + email);
                 });
         return new PrincipalDetail(principal);
     }
