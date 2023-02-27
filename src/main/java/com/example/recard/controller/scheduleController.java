@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class scheduleController {
 
     // 메인화면 요청받기
-    @GetMapping("/main")
+    @GetMapping("/")
     public String main(){
         return "main";
     }

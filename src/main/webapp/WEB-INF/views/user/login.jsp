@@ -24,10 +24,17 @@
                 <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요." required="required">
             </div>
             <br>
+
                 <div id="loginbt" > <!-- 로그인 버튼 -->
                     <button id="loginbtn">
                         <!-- <img alt="login" src="./img/login1.png" style="vertical-align: text-bottom;"> -->
                     로그인</button>
+                </div>
+
+                <div id="joinbt" > <!-- 로그인 버튼 -->
+                    <button id="joinbtn" onclick="location.href='join'">
+                        <!-- <img alt="login" src="./img/login1.png" style="vertical-align: text-bottom;"> -->
+                    회원가입</button>
                 </div>
                 <br>
                 </div>
