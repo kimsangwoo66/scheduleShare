@@ -54,6 +54,7 @@ public class UserService {
     }
 
     // Controller에서 발생한 에러를 전달받아 알맞게 정재한 뒤에 다시 반환
+    @Transactional(readOnly = true)
     public Map<String, String> validateHandling(BindingResult bindingResult){
         Map<String, String> validatorResult = new HashMap<>();
 
