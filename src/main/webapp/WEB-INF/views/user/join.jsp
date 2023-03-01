@@ -20,26 +20,26 @@
 			    <!-- 이메일 입력창 -->
                 <span>이메일</span>
                 <br>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" class="w-75">
                 <p id="valid_email"></p>
 
 
                 <!-- 비밀번호 입력창 -->
                 <span>비밀번호</span>
                 <br>
-                <input type="password" id="password" name="password" class="jpw1" placeholder="비밀번호를 입력해주세요.">
+                <input type="password" id="password" name="password" class="jpw1 w-75" placeholder="8~16자 영문 대 소문자, 숫자, 특수문자를 사용">
                 <br>
                 <br>
-                <span>비밀번호 확인</span>
+                <span>비밀번호 재 확인</span>
 
                 <br>
-                <input type="password" id="pwcheck" name="pwcheck" class="jpw2" placeholder="비밀번호 확인">
+                <input type="password" id="pwcheck" name="pwcheck" class="jpw2 w-75" placeholder="비밀번호 확인">
                  <p id="valid_password"></p>
 
 				<!-- 닉네임 입력창 -->
                 <span>닉네임</span>
                 <br>
-                <input type="text" name="username" id="username" placeholder="별명 (2~15자)">
+                <input type="text" name="username" id="username" placeholder="별명 (2~15자)" class="w-75">
 				<p id="valid_username"></p>
 
 				<!-- 성별 입력  -->
