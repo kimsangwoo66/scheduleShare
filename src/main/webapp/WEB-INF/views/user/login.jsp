@@ -15,33 +15,30 @@
                 <div class="logo-back"> 로고 </div>
                 <br>
 
-            <h4 class="card-title">로그인</h4>
-            <div id="idin"> <!-- 아이디 입력창 -->
-                <input type="text" name="id" id="id" placeholder="아이디를 입력하세요." required="required">
-            </div>
-            <br>
-            <div id="pwin"> <!-- 비밀번호 입력창 -->
-                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요." required="required">
-            </div>
-            <br>
+                <form action="/auth/loginProc" method="post">
+                    <h4 class="card-title">로그인</h4>
+                    <div id="form-group"> <!-- 이메일 입력창 -->
+                        <input type="email" name="email" id="email" placeholder="이메일을 입력하세요." required="required" class="form-control w-75">
+                    </div>
+                    <br>
 
-                <div id="loginbt" > <!-- 로그인 버튼 -->
-                    <button id="loginbtn">
-                        <!-- <img alt="login" src="./img/login1.png" style="vertical-align: text-bottom;"> -->
-                    로그인</button>
-                </div>
+                    <div id="form-group"> <!-- 비밀번호 입력창 -->
+                        <input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요." required="required" class="form-control w-75">
+                    </div>
+                    <br>
 
-                <div id="joinbt" > <!-- 로그인 버튼 -->
-                    <button id="joinbtn" onclick="location.href='join'">
-                        <!-- <img alt="login" src="./img/login1.png" style="vertical-align: text-bottom;"> -->
-                    회원가입</button>
+                    <div> <!-- 로그인 버튼 -->
+                        <button>로그인</button>
+                    </div>
+                </form>
+
+                <div id="joinbt" > <!-- 회원가입 이동 버튼 -->
+                    <button id="joinbtn" onclick="location.href='join'">회원가입</button>
                 </div>
                 <br>
-                </div>
+
+            </div>
         </div>
-
-
-
-    </div>
+</div>
 
 <%@ include file="../layout/footer.jsp" %>

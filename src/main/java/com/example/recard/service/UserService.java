@@ -18,7 +18,7 @@ import java.util.Map;
 @Service
 public class UserService {
 
-    Logger log;
+
 
     @Autowired
     private UserRepository userRepository;
@@ -44,7 +44,7 @@ public class UserService {
     public void userSave(UserDto userDto){
         User user = User.builder()
                 .email(userDto.getEmail())
-                .password(encoder.encode(userDto.getUsername()))
+                .password(encoder.encode(userDto.getPassword()))
                 .username(userDto.getUsername())
                 .state(userDto.getState())
                 .gender(userDto.getGender())

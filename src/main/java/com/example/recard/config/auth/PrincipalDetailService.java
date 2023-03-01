@@ -20,11 +20,20 @@ public class PrincipalDetailService implements UserDetailsService {
     // email이 DB에 존재하는지만 확인
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
         User principal = userRepository.findByEmail(email)
+
                 .orElseThrow(() -> {
                     return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다." + email);
                 });
-        return new PrincipalDetail(principal);
+        System.out.println(principal.toString());
+        System.out.println("꺼낸 이메일: " + principal.getEmail());
+        System.out.println("꺼낸 비밀번호: " + principal.getPassword());
+        PrincipalDetail prin = new PrincipalDetail(principal);
+        System.out.println("꺼낸 이메일2: " + prin.getUsername());
+        System.out.println("꺼낸 이메일2: " + prin.getPassword());
+
+        return new PrincipalDetail(principal); //시큐리티 세션에 user정보가 저장됨
     }
 
 

@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false, length = 300)
     private String password;
 
     @Column(nullable = false, length = 5)

@@ -10,6 +10,11 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<!--spring security 승인태그 , 세션으로 저장된 로그인 객체가 principal이름으로 저장, var="principal" 이 userDetail-->
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,8 +157,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-
-
             <c:choose>
                     <c:when test="${empty principal}">
                           <!--로그인 안한 상태일 경우 나오는 nav bar-->
@@ -192,7 +195,7 @@
 
                     </c:when>
                         <c:otherwise>
-                        <!--로그인한 상태일 경우 나오는 nav bar-->
+                            <!--로그인한 상태일 경우 나오는 nav bar-->
                             <div class="col-8">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">

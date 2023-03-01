@@ -1,5 +1,7 @@
 package com.example.recard.controller;
 
+import com.example.recard.config.auth.PrincipalDetail;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,6 +11,7 @@ public class scheduleController {
     // 메인화면 요청받기
     @GetMapping("/")
     public String main(){
+
         return "main";
     }
 
