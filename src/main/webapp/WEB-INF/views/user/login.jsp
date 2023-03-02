@@ -27,6 +27,12 @@
                     </div>
                     <br>
 
+                    <span>
+                        <c:if test="${error}">
+                            <p id="valid" class="alert alert-danger">${exception}</p>
+                        </c:if>
+                    </span>
+
                     <div> <!-- 로그인 버튼 -->
                         <button>로그인</button>
                     </div>
