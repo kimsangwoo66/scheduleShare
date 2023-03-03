@@ -11,7 +11,7 @@
 <div class="row justify-content-around">
 
         <div class="card" style="width:300px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+            <img class="card-img-top"  alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">스케줄러 제목</h4>
                         <span class="rounded-lg border border-primary">카테고리</span>
@@ -26,7 +26,7 @@
 
 
         <div class="card" style="width:300px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+            <img class="card-img-top" src="" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">스케줄러 제목</h4>
 
@@ -41,7 +41,7 @@
         </div>
 
         <div class="card" style="width:300px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+            <img class="card-img-top" src="" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">스케줄러 제목</h4>
 
@@ -57,7 +57,7 @@
 
 
         <div class="card" style="width:300px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+            <img class="card-img-top" src="" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">스케줄러 제목</h4>
 
