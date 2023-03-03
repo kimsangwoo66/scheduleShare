@@ -1,6 +1,10 @@
 package com.example.recard.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,6 +13,9 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProfilePhoto {
 
     @Id
@@ -25,11 +32,11 @@ public class ProfilePhoto {
     @CreationTimestamp
     private Timestamp createAt;
 
-
+    @ColumnDefault("null")
     private Timestamp deleteAt;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User user;
 
 }

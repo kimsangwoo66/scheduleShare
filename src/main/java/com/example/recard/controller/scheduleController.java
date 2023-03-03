@@ -1,12 +1,23 @@
 package com.example.recard.controller;
 
 import com.example.recard.config.auth.PrincipalDetail;
+import com.example.recard.domain.ProfilePhoto;
+import com.example.recard.service.ScheduleService;
+import com.example.recard.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Optional;
 
 @Controller
 public class scheduleController {
+
+
 
     // 메인화면 요청받기
     @GetMapping("/")
@@ -33,11 +44,8 @@ public class scheduleController {
         return "schedule/details";
     }
 
-    //마이페이지
-    @GetMapping("/myPage")
-    public String MyPage(){
-        return "user/myPage";
-    }
+
+
 
     //마이스케줄 페이지
     @GetMapping("/myList")

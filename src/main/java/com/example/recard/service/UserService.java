@@ -1,8 +1,10 @@
 package com.example.recard.service;
 
+import com.example.recard.domain.ProfilePhoto;
 import com.example.recard.domain.RoleType;
 import com.example.recard.domain.User;
 import com.example.recard.dto.UserDto;
+import com.example.recard.repository.ProfilePhotoRepository;
 import com.example.recard.repository.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.validation.FieldError;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,6 +25,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProfilePhotoRepository profilePhotoRepository;
 
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -66,6 +72,15 @@ public class UserService {
         }
 
         return validatorResult;
+    }
+
+
+
+    //테스트
+    public Optional<ProfilePhoto> profilePhotoFind(Long id){
+        Optional<ProfilePhoto> photoInfo = profilePhotoRepository.findByUserId(id);
+
+        return photoInfo;
     }
 
 

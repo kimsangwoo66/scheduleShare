@@ -6,56 +6,71 @@
             <h2 class="m-3">내 정보 </h2>
             <div class="card-body m-2">
                 <form action="/action_page.php">
+                    <!--어떤 user의 정보인지 userid값으로 확인하기 위해 hidden으로 id값을 서버에 가져옴-->
                     <div class="form-group">
-
+                        <input type="hidden" id="user_id" value="${principal.user.user_id}"/>
                         <div class="row">
                             <div class="row-cols-sm-1">
                                 <div for="email">이메일</div>
                             </div>
                             <div class="col-sm-4">
-                                <input type="email" class="form-control" id="email" value="mm@naver.com">
+                                <input type="email" class="form-control" value="${principal.user.email}" id="email" readonly>
                             </div>
                         </div>
                         <br/>
                         <div class="row">
                             <div class="row-cols-sm-1">
-                                <div for="username">이름</div>
+                                <div for="username">닉네임</div>
                             </div>
                             <div class="col-sm-2">
-                                <input type="username" class="form-control" id="username" value="김땡떙">
+                                <input type="username" class="form-control" id="username" value="${principal.user.username}" readonly>
                             </div>
                         </div>
 
                         <br/>
                         <div class="row">
-
                             <div style="padding-right: 15px;">성별</div>
-                            <div class="form-check mb-2 mr-sm-2">
-
-                                <label class="form-check-label">
-                                <span><input class="form-check-input" type="checkbox">남자</span>
-                                </label>
-
-                            </div>
-
-                            <div class="form-check mb-2 mr-sm-2">
-                                <label class="form-check-label">
-                                <span><input class="form-check-input" type="checkbox">여자</span>
-                                </label>
-                            </div>
+                            <c:choose>
+                                    <c:when test="${principal.user.gender == 1}">
+                                        <input type="radio" id="gender" name="gender" value=1 checked onclick="return(false);"><span>남자</span>
+                                                        &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <input type="radio" id="gender" name="gender" value=2 onclick="return(false);"><span>여자</span>
+                                    </c:when>
+                                        <c:otherwise>
+                                            <input type="radio" id="gender" name="gender" value=1 onclick="return(false);"><span>남자</span>
+                                                            &nbsp; &nbsp; &nbsp; &nbsp;
+                                            <input type="radio" id="gender" name="gender" value=2 checked onclick="return(false);"><span>여자</span>
+                                        </c:otherwise>
+                           </c:choose>
                         </div>
+
                         <br/><br/>
-
-                        <div class="image-container">
-                            <label for="file"><div class="btn-upload">프로필 이미지 변경</div></label>
-                            <input type="file" name="file" id="file">
-                            <div><img style="width: 200px;" id="preview-image" src="/img/"></div>
+                        <div class="img">
+                        		<div class="title_image">
+                        			<c:choose>
+                        				<c:when test="${profile.fileName == null}">
+                        					<img src="/images/noimage.png" class="img-thumbnail rounded" width="50%" height="50%">
+                        				</c:when>
+                        				<c:otherwise>
+                        					<img src="/images/profile/${profile.fileName}" class="img-thumbnail rounded" width="50%" height="50%">
+                        				</c:otherwise>
+                        			</c:choose>
+                        		</div>
                         </div>
+                        <div class="filebox">
+
+                                <form action="/user/image" method="POST" onsubmit="return false;" enctype="multipart/form-data">
+                                    <label class="input-file-button text-center" for="file">이미지 변경</label>
+                                    <input type="file" id="file" onchange="addFile(this);" multiple/>
+                                </form>
+
+                        </div>
+
                     </div>
                     <button type="submit" class="btn btn-primary">수정적용</button>
                   </form>
             </div>
-          </div>
+         </div>
     <br/>
     <br/>
 
