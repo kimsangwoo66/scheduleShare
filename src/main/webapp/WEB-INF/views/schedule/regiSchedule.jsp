@@ -64,11 +64,10 @@
 
             </form>
                 <div class="container text-right">
-                    <button class="my-button text-center" onclick="check()">등록 완료</button>
+                    <button id ="btn-save" class="my-button text-center" onclick="check()">등록 완료</button>
                 </div>
         </div>
     </div>
 
-
-
+<script src="/js/schedule.js"></script>
 <%@ include file="../layout/footer.jsp" %>
