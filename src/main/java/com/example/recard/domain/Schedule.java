@@ -22,7 +22,6 @@ public class Schedule {
     @Lob
     private String content;
 
-
     private Long likeCount;
 
     @Column(nullable = false, length = 2)
@@ -30,9 +29,7 @@ public class Schedule {
 
     private Long moneyCost;
 
-
     private int timeCost;
-
 
     @CreationTimestamp
     private Timestamp createAt;
@@ -42,12 +39,9 @@ public class Schedule {
 
     private Timestamp deleteAt;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user_id;
-
-
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
