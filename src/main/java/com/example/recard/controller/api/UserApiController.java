@@ -72,7 +72,7 @@ public class UserApiController {
     }
 
 
-//
+
     @PostMapping("/user/image")
     public ResponseDto<?> ProfileInsert(HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal,
                                 @RequestParam("fileline")MultipartFile mfile) throws Exception {
@@ -90,6 +90,7 @@ public class UserApiController {
 
         UUID uuid = UUID.randomUUID();
         String extention = (mfile.getOriginalFilename()).substring(mfile.getOriginalFilename().lastIndexOf("."));
+
         // 파일 이름을 uuid형식.이미지확장자 로 변경
         String fileName = uuid + extention;
 
