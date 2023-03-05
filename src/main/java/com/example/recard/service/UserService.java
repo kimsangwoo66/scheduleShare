@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -76,11 +77,42 @@ public class UserService {
 
 
 
-    //테스트
+
     public Optional<ProfilePhoto> profilePhotoFind(Long id){
         Optional<ProfilePhoto> photoInfo = profilePhotoRepository.findByUserId(id);
 
         return photoInfo;
+    }
+
+
+    @Transactional
+    public void ProfilePhotoDeleteAtUpdate(ProfilePhoto profilePhoto){
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+
+        Long chIntId = profilePhoto.getProfile_id();
+
+
+        // 영속화
+        ProfilePhoto persistence = profilePhotoRepository.findById(chIntId).orElseThrow(()->{
+            return new IllegalArgumentException("사진아이디 찾기 실패");
+        });
+
+        //삭제 시간을 현재로 업데이트
+        persistence.setDeleteAt(timestamp);
+        System.out.println("업데이트 체크: " + persistence.toString());
+
+    }
+
+    public void ProfilePhotoSave(String uploadPath, String fileName, User user){
+        ProfilePhoto profilePhoto = new ProfilePhoto();
+
+        // PhysicalPath = uploadPath + fileName
+        profilePhoto.setPhysicalPath(uploadPath + fileName);
+        profilePhoto.setFileName(fileName);
+        profilePhoto.setUser(user);
+
+        profilePhotoRepository.save(profilePhoto);
     }
 
 

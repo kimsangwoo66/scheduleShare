@@ -51,8 +51,11 @@ public class userController {
                         return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.: " + userId);
                     });
             System.out.println(profilePhotoNoEmpty);
+
+
             model.addAttribute("profile",profilePhotoNoEmpty);
         }
+
 
         return "user/myPage";
     }

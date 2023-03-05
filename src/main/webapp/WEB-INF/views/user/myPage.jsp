@@ -5,7 +5,7 @@
         <div class="card justify-content-center m-3">
             <h2 class="m-3">내 정보 </h2>
             <div class="card-body m-2">
-                <form action="/action_page.php">
+                <div>
                     <!--어떤 user의 정보인지 userid값으로 확인하기 위해 hidden으로 id값을 서버에 가져옴-->
                     <div class="form-group">
                         <input type="hidden" id="user_id" value="${principal.user.user_id}"/>
@@ -52,23 +52,25 @@
                         					<img src="/images/noimage.png" class="img-thumbnail rounded" width="50%" height="50%">
                         				</c:when>
                         				<c:otherwise>
-                        					<img src="/images/profile/${profile.fileName}" class="img-thumbnail rounded" width="50%" height="50%">
+                        					<img src="<c:url value='/img/${profile.fileName}'/>" id="image-preview" class="img-thumbnail rounded" width="50%" height="50%">
                         				</c:otherwise>
                         			</c:choose>
                         		</div>
-                        </div>
-                        <div class="filebox">
 
-                                <form action="/user/image" method="POST" onsubmit="return false;" enctype="multipart/form-data">
-                                    <label class="input-file-button text-center" for="file">이미지 변경</label>
-                                    <input type="file" id="file" onchange="addFile(this);" multiple/>
+                        </div>
+                        <div>
+                                <form action="/user/image" method="POST" id="form" name="form" enctype="multipart/form-data" autocomplete="off">
+                                    <label class="input-file-button text-center" for="fileline">이미지 변경</label>
+                                    <input type="file" id="fileline" name="fileline"/>
+                                    <div/>
+                                    <button type="submit" class="btn btn-primary">수정적용</button>
                                 </form>
 
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-primary">수정적용</button>
-                  </form>
+
+                </div>
             </div>
          </div>
     <br/>
@@ -81,7 +83,7 @@
     </div>
 
 
-<script src="src/main/webapp/js/myPage.js"></script>
+<script src="/js/myPage.js"></script>
 
 </div>
 <%@ include file="../layout/footer.jsp" %>

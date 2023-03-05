@@ -104,7 +104,7 @@
             margin-left: 5px;
         }
 
-        #file {
+        #fileline {
         display: none;
         }
 

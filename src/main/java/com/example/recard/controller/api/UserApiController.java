@@ -20,10 +20,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -70,28 +73,58 @@ public class UserApiController {
 
 
 //
-//    @PostMapping("/user/image")
-//    public String ProfileInsert(HttpServletRequest request,@AuthenticationPrincipal PrincipalDetail principal,
-//                                @RequestParam("filename")MultipartFile mfile, Model model) {
-//
-//        String uploadPath = "/Users/gimsang-u/Desktop/study/recard/src/main/resources/static/images/profile/";
-//        String redirectUrl = "/myPage";
-//
-//        Long userId = principal.getUser().getUser_id();
-//        Optional<ProfilePhoto> profilePhoto = userService.profilePhotoFind(userId);
-//
-//        //기존 프로필 파일이 존재할 경우 제거
-//        if (profilePhoto.isEmpty() != true) {
-//            ProfilePhoto profile = userService.profilePhotoFind(userId)
-//                    .orElseThrow(() -> {
-//                        return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.: " + userId);
-//                    });
-//            //기존 레코드의 deleteAt 업데이트 쿼리 필요
-//            File file = new File(uploadPath + profile.getFileName());
-//            file.delete();
-//
-//        }
-//    }
+    @PostMapping("/user/image")
+    public ResponseDto<?> ProfileInsert(HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal,
+                                @RequestParam("fileline")MultipartFile mfile) throws Exception {
+
+        String redirectUrl = "/myPage";
+
+        // 변경한 이미지가 없을 경우 처리
+        if(mfile.isEmpty()){
+            response.sendRedirect(redirectUrl);
+            return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+        }
+
+        //서버 PC에 맞는 경로별 수정 필요
+        String uploadPath = "/Users/gimsang-u/Desktop/study/img/";
+
+        UUID uuid = UUID.randomUUID();
+        String extention = (mfile.getOriginalFilename()).substring(mfile.getOriginalFilename().lastIndexOf("."));
+        // 파일 이름을 uuid형식.이미지확장자 로 변경
+        String fileName = uuid + extention;
+
+        Long userId = principal.getUser().getUser_id();
+        Optional<ProfilePhoto> profilePhoto = userService.profilePhotoFind(userId);
+
+
+        //기존 프로필 파일이 존재할 경우 제거
+        try {
+            if (profilePhoto.isEmpty() != true) {
+                ProfilePhoto profile = userService.profilePhotoFind(userId)
+                        .orElseThrow(() -> {
+                            return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.: " + userId);
+                        });
+
+                //기존 레코드의 deleteAt 업데이트 쿼리
+                userService.ProfilePhotoDeleteAtUpdate(profile);
+                File file = new File(uploadPath + profile.getFileName());
+                file.delete();
+
+            }
+            mfile.transferTo(new File(uploadPath + fileName));
+
+        }catch(IllegalStateException | IOException e){
+            e.printStackTrace();
+        }
+
+        // profilePhoto에 새로운 레코드 insert
+        userService.ProfilePhotoSave(uploadPath, fileName, principal.getUser());
+
+        response.sendRedirect(redirectUrl);
+
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
 
 
 
