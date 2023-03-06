@@ -1,28 +1,38 @@
 package com.example.recard.controller;
 
-import com.example.recard.config.auth.PrincipalDetail;
-import com.example.recard.domain.ProfilePhoto;
+import com.example.recard.domain.Schedule;
 import com.example.recard.service.ScheduleService;
-import com.example.recard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Optional;
+import java.util.List;
 
 @Controller
 public class scheduleController {
+    @Autowired
+    ScheduleService scheduleService;
+
+    //build get all schedule REST API
+    @GetMapping("/api/schedules")
+    public List<Schedule> getAllSchedules(){
+        return scheduleService.getAllSchedules();
+    }
 
 
+    //build get all schedule by id REST API
+    // http://localhost:8080/api/schedules/1
+    @GetMapping("/api/schedules/{id}")
+    public ResponseEntity<Schedule> getScheduleById(@PathVariable("id") long scheduleId){
+        return new ResponseEntity<Schedule>(scheduleService.scheduleGetId(scheduleId), HttpStatus.OK);
+    }
 
     // 메인화면 요청받기
     @GetMapping("/")
     public String main(){
-
         return "main";
     }
 
