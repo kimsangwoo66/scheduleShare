@@ -15,23 +15,22 @@
         <h2>스케줄 작성</h2>
         <div class="image-container">
             <div class="insert-img">
-                <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
-                    <label class="input-file-button" for="file">이미지 추가</label>
+                <form method="POST" onsubmit="return submitForm();" enctype="multipart/form-data" id="imgform">
+                    <label class="input-file-button" for="file">사진 추가</label>
                     <input type="file" id="file" onchange="addFile(this);" multiple  style="display: none;"/>
                     <div class="file-list"></div>
                 </form>
-            </div>
-
-
         </div>
 
         <br/>
 
 
         <div class="container">
-            <div class="col-1"><span class="rounded-lg border border-primary text-left">카테고리</span></div>
-            <br/>
+
             <form>
+            <div class="col-1"><span class="rounded-lg border border-primary text-left"><input hidden id="category" value="1">카테고리</span></div>
+                        <br/>
+
                   <div class="form-group col-6">
                     <input type="username" class="form-control" placeholder="제목을 입력하세요" id="title">
                   </div>
@@ -41,12 +40,6 @@
                   </div>
 
 
-                  <div class="form-check col-1">
-                      <label class="form-check-label"></label>
-                      <span><input class="form-check-input" type="checkbox">종일</span>
-                      </label>
-                  </div>
-
                   <!-- <div class="form-group col-8">
                     <label>시작</label>&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="startTime" id="startTime">
                     <br/>
@@ -55,20 +48,18 @@
 
                  <div class="form-group col-8">
                     <label>소요시간</label>
-                    <input type="text" name="timeCost">
+                    <input type="text" name="timeCost" id="timeCost">
                     <br/>
                     <label>총비용</label>
-                    <input type="text" name="moneyCost">
+                    <input type="text" name="moneyCost" id="moneyCost">
                  </div>
-
-
             </form>
                 <div class="container text-right">
-                    <button class="my-button text-center" onclick="check()">등록 완료</button>
+                    <button onclick="submitForm()" id="sbtn-save" class="my-button text-center">등록 완료</button>
                 </div>
         </div>
     </div>
 
 
-
+<script src="/js/schedule.js"></script>
 <%@ include file="../layout/footer.jsp" %>
