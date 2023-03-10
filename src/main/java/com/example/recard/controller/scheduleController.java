@@ -30,25 +30,25 @@ public class scheduleController {
         return new ResponseEntity<Schedule>(scheduleService.scheduleGetId(scheduleId), HttpStatus.OK);
     }
 
-    // 메인화면 요청받기
+    // 메인화면 랜더링
     @GetMapping("/")
     public String main(){
         return "main";
     }
 
-    //스케줄 등록
+    //스케줄 등록 화면 랜더링
     @GetMapping("/schedules")
-    public String SchedulesRegiMain(){
+    public String Schedules(){
       return "schedule/saveForm";
     }
 
-    //스케줄 등록
-    @GetMapping("/selectCategory")
-    public String SelectCategory(){
+    //스케줄 카테고리 등록 화면 랜더링
+    @GetMapping("/category")
+    public String Category(){
         return "schedule/selectCategory";
     }
 
-    //스케줄 상세화면
+    //스케줄 상세 화면 랜더링
     @GetMapping("/details")
     public String Details(){
         return "schedule/details";

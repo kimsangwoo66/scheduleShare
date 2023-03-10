@@ -13,15 +13,16 @@ public class UserLike {
     //member.setId("1"); // 기본키 직접 할당
     //EntityManager.persist(member);
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer like_id;
 
     @ManyToOne
     @JoinColumn(name= "schedule_id")
-    private Schedule schedule_id;
+    private Schedule schedule;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User user;
+
 
 }

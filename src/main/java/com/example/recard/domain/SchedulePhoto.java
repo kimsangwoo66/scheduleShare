@@ -22,14 +22,9 @@ public class SchedulePhoto {
     @Column(nullable = false, length = 200)
     private String fileName;
 
-    @CreationTimestamp
-    private Timestamp createAt;
-
-    private Timestamp deleteAt;
-
     @ManyToOne
     @JoinColumn(name = "schedule_id")
-    private Schedule schedule_id;
+    private Schedule schedule;
 
 
 

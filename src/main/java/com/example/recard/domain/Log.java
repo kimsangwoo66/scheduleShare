@@ -24,7 +24,7 @@ public class Log{
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User user;
 
 
 }

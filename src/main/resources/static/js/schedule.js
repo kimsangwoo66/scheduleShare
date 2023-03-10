@@ -98,23 +98,36 @@ function submitForm() {
     for (let value of formData.values()) {
           console.log(value);
     }
-//    console.log("filelist: " + JSON.stringify(form));
 
+    let data = {
+        category: {
+        category_id: parseInt($("#category").val())
+        },
+        title: $("#title").val(),
+        content: $("#content").val(),
+        timeCost: parseInt($("#timeCost").val()),
+        moneyCost: parseInt($("#moneyCost").val())
+    };
+
+    //formData에 input 에 담긴 값들을 담은 json 객체 추가
+    formData.append("schedule", new Blob([JSON.stringify(data)], {type: "application/json"}));
 
   $.ajax({
     type: "POST",
-    url: "/api/scheduleFile",
+    url: "/api/schedule",
     enctype: "multipart/form-data",
     processData: false,
     contentType: false,
     data: formData,
+    datatype: "json",
     async: true,
     timeout: 30000,
     cache: false,
     headers: { "cache-control": "no-cache", pragma: "no-cache" },
     success: function () {
-        console.log("파일 업로드 성공")
-        index.save();
+        console.log("파일 업로드 성공");
+        alert("등록 완료");
+        location.href = "/";
 
     },
     error: function (xhr, desc, err) {
@@ -122,6 +135,8 @@ function submitForm() {
       return;
     },
   });
+
+
 }
 
 
@@ -134,18 +149,19 @@ let index = {
     },
 
 
-    save:function(){
-
-        let data = {
-            category: $("#category").val(),
-            title: $("#title").val(),
-            content: $("#content").val(),
-            timecost: $("#timeCost").val(),
-            moneycost: $("#moneyCost").val(),
-            filelist: filelist
-        };
-        console.log(JSON.stringify(data))
-
+//    save:function(){
+//
+//        let data = {
+//            category: {
+//            category_id: parseInt($("#category").val())
+//            },
+//            title: $("#title").val(),
+//            content: $("#content").val(),
+//            timeCost: parseInt($("#timeCost").val()),
+//            moneyCost: parseInt($("#moneyCost").val())
+//        };
+//        console.log(JSON.stringify(data))
+//
 //        $.ajax({
 //            type: "POST",
 //            url: "api/schedule",
@@ -159,8 +175,8 @@ let index = {
 //        }).fail(function(error){
 //            alert(JSON.stringify(error));
 //        });
-
-    }
+//
+//    }
 
 }
 

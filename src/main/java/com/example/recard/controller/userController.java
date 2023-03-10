@@ -19,6 +19,7 @@ public class userController {
      @Autowired
      UserService userService;
 
+     // 로그인 페이지 랜더링
      @GetMapping("/auth/login")
      public String login(@RequestParam(value = "error", required = false) String error,
                          @RequestParam(value = "exception", required = false) String exception,
@@ -30,6 +31,7 @@ public class userController {
          return "user/login";
      }
 
+     //회원가입 페이지 랜더링
      @GetMapping("/auth/join")
      public String join(){
 
@@ -37,8 +39,9 @@ public class userController {
      }
 
 
+
     //@AuthenticationPrincipal PrincipalDetail principal -> 로그인한 사용자 세션 정보를 갖고있는 어노테이션
-    //마이페이지
+    //마이페이지 랜더링
     @GetMapping("/myPage")
     public String MyPage(Model model,@AuthenticationPrincipal PrincipalDetail principal){
 

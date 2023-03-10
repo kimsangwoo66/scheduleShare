@@ -45,15 +45,7 @@ public class UserApiController {
         binder.addValidators(checkUsernameValidator);
     }
 
-
-//    @PostMapping("/auth/joinProc")
-//    public ResponseDto<Integer> save(@RequestBody User user){
-//        userService.userSave(user);
-//
-//        //정상적으로 작동할경우 http 상태코드와 , 데이터 1반환
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//    }
-
+    //회원가입 요청 api
     @PostMapping("/auth/joinProc")
     public ResponseDto<?> save(@Valid @RequestBody UserDto userDto, BindingResult bindingResult){
 
@@ -72,7 +64,7 @@ public class UserApiController {
     }
 
 
-
+    // 유저 이미지 추가 && 변경 api
     @PostMapping("/user/image")
     public ResponseDto<?> ProfileInsert(HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal,
                                 @RequestParam("fileline")MultipartFile mfile) throws Exception {
