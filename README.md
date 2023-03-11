@@ -5,30 +5,12 @@
 
 ## config
 
-서버별 파일 업로드 경로 변경 필요 
-
-#### [UserApiController]
-
-* String uploadPath = "서버 외부 경로"
-* ex) String uploadPath = "/Users/kk/Desktop/study/img/";
-
-
-#### []
-
+서버에 설정값을 추가해줘야 합니다.
 
 #### [application.properties]
+####server external path setting .. for upload imgs##
 
-
-##save in server external path.. use in MvcConfig##
-
-추가 
-
-resource.path=file:서버 외부 경로
-
+resource.path=/Users/gimsang-u/Desktop/study/img/
 img.path=/img/**
 
-ex)
 
-   resource.path=file:/Users/kk/Desktop/study/img/
-
-   img.path=/img/**
