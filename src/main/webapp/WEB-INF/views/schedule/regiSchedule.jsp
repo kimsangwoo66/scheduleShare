@@ -41,18 +41,6 @@
                   </div>
 
 
-                  <div class="form-check col-1">
-                      <label class="form-check-label"></label>
-                      <span><input class="form-check-input" type="checkbox">종일</span>
-                      </label>
-                  </div>
-
-                  <!-- <div class="form-group col-8">
-                    <label>시작</label>&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="startTime" id="startTime">
-                    <br/>
-                    <label>종료</label>&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="endTime" id="endTime">
-                 </div> -->
-
                  <div class="form-group col-8">
                     <label>소요시간</label>
                     <input type="text" name="timeCost">

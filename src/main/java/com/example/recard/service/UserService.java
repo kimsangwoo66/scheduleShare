@@ -60,7 +60,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    // Controller에서 발생한 에러를 전달받아 알맞게 정재한 뒤에 다시 반환
+    // Controller에서 발생한 에러를 전달받아 알맞게 정재한 뒤에 다시 리턴
     @Transactional(readOnly = true)
     public Map<String, String> validateHandling(BindingResult bindingResult){
         Map<String, String> validatorResult = new HashMap<>();

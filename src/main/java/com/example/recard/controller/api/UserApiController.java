@@ -10,6 +10,7 @@ import com.example.recard.validator.CheckEmailValidator;
 import com.example.recard.validator.CheckUsernameValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,6 +38,10 @@ public class UserApiController {
 
     private final CheckEmailValidator checkEmailValidator;
     private final CheckUsernameValidator checkUsernameValidator;
+
+    //application.properties의 설정 외부 경로 값 맵핑
+    @Value("${resource.path}")
+    String uploadPath;
 
 
     @InitBinder
@@ -77,8 +82,7 @@ public class UserApiController {
             return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
         }
 
-        //서버 PC에 맞는 경로별 수정 필요
-        String uploadPath = "/Users/gimsang-u/Desktop/study/img/";
+
 
         UUID uuid = UUID.randomUUID();
         String extention = (mfile.getOriginalFilename()).substring(mfile.getOriginalFilename().lastIndexOf("."));

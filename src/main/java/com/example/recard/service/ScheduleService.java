@@ -2,9 +2,11 @@ package com.example.recard.service;
 
 import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
+import com.example.recard.domain.SchedulePhoto;
 import com.example.recard.domain.User;
 import com.example.recard.dto.ScheduleDto;
 import com.example.recard.repository.CategoryRepository;
+import com.example.recard.repository.SchedulePhotoRepository;
 import com.example.recard.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public class ScheduleService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    SchedulePhotoRepository schedulePhotoRepository;
 
 
 
@@ -58,9 +63,11 @@ public class ScheduleService {
     }
 
     @Transactional
-    public ScheduleDto ScheduleFinalSave(ScheduleDto scheduleDto, User user){
+    public Schedule ScheduleFinalSave(ScheduleDto scheduleDto, User user){
 
+        //optional은 .get()으로 객체를 가져올 수 있음
         Optional<Category> category = categoryRepository.findById(scheduleDto.getCategory().getCategory_id());
+
 
         Schedule schedule = Schedule.builder()
                 .title(scheduleDto.getTitle())
@@ -76,26 +83,27 @@ public class ScheduleService {
         Schedule scheduleInfo = scheduleRepository.save(schedule);
 
 
-        ScheduleDto savedSchedule = new ScheduleDto();
-        savedSchedule.setSchedule_id(scheduleInfo.getSchedule_id());
-        savedSchedule.setTitle(scheduleInfo.getTitle());
-        savedSchedule.setContent(scheduleInfo.getContent());
-        savedSchedule.setLikeCount(scheduleInfo.getLikeCount());
-        savedSchedule.setState(scheduleInfo.getState());
-        savedSchedule.setMoneyCost(scheduleInfo.getMoneyCost());
-        savedSchedule.setTimeCost(scheduleInfo.getTimeCost());
-        savedSchedule.setUpdateAt(scheduleInfo.getUpdateAt());
-        savedSchedule.setDeleteAt(scheduleInfo.getDeleteAt());
-        savedSchedule.setUser(scheduleInfo.getUser());
-        savedSchedule.setCategory(scheduleInfo.getCategory());
-
-
-        return savedSchedule;
+        return scheduleInfo;
     }
 
     @Transactional
-    public void schedulePhotoSave(MultipartFile mfile){
+    public void schedulePhotoSave(String uploadPath, String fileName, Schedule schedule){
+        String fullUploadPath = uploadPath + fileName;
 
+        //System.out.println("념겨받은 schedule 객체 값: " + schedule.toString());
+
+
+        SchedulePhoto schedulePhoto = SchedulePhoto.builder()
+                .physicalPath(fullUploadPath)
+                .fileName(fileName)
+                .schedule(schedule)
+                .build();
+
+
+
+        //System.out.println("schedulePhoto 객체 값: " + schedulePhoto.toString());
+
+        schedulePhotoRepository.save(schedulePhoto);
 
     }
 
