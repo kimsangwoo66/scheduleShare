@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -43,10 +44,18 @@ public class scheduleController {
     }
 
     //스케줄 카테고리 등록 화면 랜더링
+//    @GetMapping("/category")
+//    public String Category(){
+//        return "schedule/selectCategory";
+//    }
     @GetMapping("/category")
-    public String Category(){
+    public String Category(Model model){
+        List<Schedule> scheduleList = getAllSchedules();
+        System.out.println(scheduleList);
+        model.addAttribute("category", scheduleList);
         return "schedule/selectCategory";
     }
+
 
     //스케줄 상세 화면 랜더링
     @GetMapping("/details")
