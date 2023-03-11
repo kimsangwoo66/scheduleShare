@@ -59,8 +59,8 @@ function validation(obj) {
   if (obj.name.length > 100) {
     alert("파일명이 100자 이상인 파일은 제외되었습니다.");
     return false;
-  } else if (obj.size > 100 * 1024 * 1024) {
-    alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+  } else if (obj.size > 1024 * 1024 * 2) {
+    alert("최대 이미지 파일 사이즈가 2MB를 초과한 파일은 제외되었습니다.");
     return false;
   } else if (obj.name.lastIndexOf(".") == -1) {
     alert("확장자가 없는 파일은 제외되었습니다.");
