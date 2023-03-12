@@ -82,8 +82,6 @@ public class UserApiController {
             return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
         }
 
-
-
         UUID uuid = UUID.randomUUID();
         String extention = (mfile.getOriginalFilename()).substring(mfile.getOriginalFilename().lastIndexOf("."));
 
@@ -101,12 +99,10 @@ public class UserApiController {
                         .orElseThrow(() -> {
                             return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.: " + userId);
                         });
-
-                //기존 레코드의 deleteAt 업데이트 쿼리
-                userService.ProfilePhotoDeleteAtUpdate(profile);
                 File file = new File(uploadPath + profile.getFileName());
                 file.delete();
-
+                //기존 레코드 삭제
+                userService.ProfilePhotoDelete(profile);
             }
             mfile.transferTo(new File(uploadPath + fileName));
 

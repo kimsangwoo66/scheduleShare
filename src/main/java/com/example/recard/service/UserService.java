@@ -34,18 +34,6 @@ public class UserService {
     private BCryptPasswordEncoder encoder;
 
 
-//    @Transactional
-//    public void userSave(User user){
-//
-//            String rawPassword = user.getPassword();
-//            String encPassword = encoder.encode(rawPassword);
-//
-//            user.setPassword(encPassword);
-//            user.setRole(RoleType.USER);
-//            userRepository.save(user);
-//
-//
-//    }
 
     @Transactional
     public void userSave(UserDto userDto){
@@ -77,33 +65,31 @@ public class UserService {
 
 
 
-
+    @Transactional
     public Optional<ProfilePhoto> profilePhotoFind(Long id){
         Optional<ProfilePhoto> photoInfo = profilePhotoRepository.findByUserId(id);
+
+        //Optional<ProfilePhoto> photoInfo = profilePhotoRepository.findById(id);
 
         return photoInfo;
     }
 
 
     @Transactional
-    public void ProfilePhotoDeleteAtUpdate(ProfilePhoto profilePhoto){
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
+    public void ProfilePhotoDelete(ProfilePhoto profilePhoto){
 
         Long chIntId = profilePhoto.getProfile_id();
+        profilePhotoRepository.deleteById(chIntId);
 
+//        // 영속화
+//        ProfilePhoto persistence = profilePhotoRepository.findById(chIntId).orElseThrow(()->{
+//            return new IllegalArgumentException("사진아이디 찾기 실패");
+//        });
 
-        // 영속화
-        ProfilePhoto persistence = profilePhotoRepository.findById(chIntId).orElseThrow(()->{
-            return new IllegalArgumentException("사진아이디 찾기 실패");
-        });
-
-        //삭제 시간을 현재로 업데이트
-        persistence.setDeleteAt(timestamp);
-        System.out.println("업데이트 체크: " + persistence.toString());
 
     }
 
+    @Transactional
     public void ProfilePhotoSave(String uploadPath, String fileName, User user){
         ProfilePhoto profilePhoto = new ProfilePhoto();
 

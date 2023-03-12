@@ -22,18 +22,11 @@ public class ProfilePhoto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long profile_id;
 
-
     @Column(nullable = false, length = 200)
     private String physicalPath;
 
     @Column(nullable = false, length = 200)
     private String fileName;
-
-    @CreationTimestamp
-    private Timestamp createAt;
-
-    @ColumnDefault("null")
-    private Timestamp deleteAt;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

@@ -48,6 +48,7 @@ public class userController {
         Long userId = principal.getUser().getUser_id();
 
         Optional<ProfilePhoto> profilePhoto = userService.profilePhotoFind(userId);
+
         if(profilePhoto.isEmpty() != true){
             ProfilePhoto profilePhotoNoEmpty = userService.profilePhotoFind(userId)
                     .orElseThrow(() -> {
