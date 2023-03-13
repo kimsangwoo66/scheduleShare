@@ -9,9 +9,10 @@ import com.example.recard.repository.CategoryRepository;
 import com.example.recard.repository.SchedulePhotoRepository;
 import com.example.recard.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -90,7 +91,6 @@ public class ScheduleService {
     public void schedulePhotoSave(String uploadPath, String fileName, Schedule schedule){
         String fullUploadPath = uploadPath + fileName;
 
-        //System.out.println("념겨받은 schedule 객체 값: " + schedule.toString());
 
 
         SchedulePhoto schedulePhoto = SchedulePhoto.builder()
@@ -100,12 +100,17 @@ public class ScheduleService {
                 .build();
 
 
-
-        //System.out.println("schedulePhoto 객체 값: " + schedulePhoto.toString());
-
         schedulePhotoRepository.save(schedulePhoto);
 
     }
+
+    @Transactional(readOnly = true)
+    public Page<Schedule> schedulesSelect(Pageable pageable){
+
+        return scheduleRepository.findAll(pageable);
+
+    }
+
 
 
 }

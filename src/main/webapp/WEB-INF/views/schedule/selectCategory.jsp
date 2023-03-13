@@ -69,10 +69,7 @@
         </div>
     </div>
     <br/>
-    <div class="container text-right">
-        <button class="my-button text-center" onclick="check()">다음</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
+
     </div>
     </div>
     </div>

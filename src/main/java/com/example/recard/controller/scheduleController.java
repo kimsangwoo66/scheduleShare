@@ -3,6 +3,10 @@ package com.example.recard.controller;
 import com.example.recard.domain.Schedule;
 import com.example.recard.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -33,9 +37,16 @@ public class scheduleController {
 
     // 메인화면 랜더링
     @GetMapping("/")
-    public String main(){
+    public String main(Model model, @PageableDefault(sort = "likeCount", direction = Sort.Direction.ASC) Pageable pageable){
+
+        Page<Schedule> schedules = scheduleService.schedulesSelect(pageable);
+        System.out.println(schedules.getContent());
+        model.addAttribute("schedules", schedules);
+
         return "main";
     }
+
+
 
     //스케줄 등록 화면 랜더링
     @GetMapping("/schedules")

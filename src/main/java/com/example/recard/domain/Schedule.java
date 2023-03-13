@@ -1,14 +1,14 @@
 package com.example.recard.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -28,7 +28,7 @@ public class Schedule {
     @Lob
     private String content;
 
-
+    @ColumnDefault("0")
     private Long likeCount;
 
     @Column(nullable = false, length = 2)
@@ -58,5 +58,10 @@ public class Schedule {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    //일대다 양방향 맵핑.. 연관관계의 주인은 SchedulePhoto
+    @OneToMany(mappedBy = "schedule")
+    private List<SchedulePhoto> schedulePhotos = new ArrayList<>();
+
 
 }
