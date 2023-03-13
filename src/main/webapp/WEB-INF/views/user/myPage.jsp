@@ -49,7 +49,7 @@
                         		<div class="title_image">
                         			<c:choose>
                         				<c:when test="${profile.fileName == null}">
-                        					<img src="/images/noimage.png" class="img-thumbnail rounded" width="50%" height="50%">
+                        					<img src="/images/noimage.png" class="img-thumbnail rounded" id="image-preview" width="50%" height="50%">
                         				</c:when>
                         				<c:otherwise>
                         					<img src="<c:url value='/img/${profile.fileName}'/>" id="image-preview" class="img-thumbnail rounded" width="50%" height="50%">

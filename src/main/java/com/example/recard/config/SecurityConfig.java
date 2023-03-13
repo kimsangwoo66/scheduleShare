@@ -4,6 +4,7 @@ package com.example.recard.config;
 import com.example.recard.config.auth.PrincipalDetailService;
 import com.example.recard.handler.CustomAuthFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomAuthFailureHandler customAuthFailureHandler;
+
+    @Value("${img.path}")
+    private String img;
 
 
 
@@ -57,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()//csrf 토큰 비활성화 (테스트시 걸어야함)
             .authorizeRequests()
-            .antMatchers("/","/auth/**","/js/**","/css/**","/images/**")
+            .antMatchers("/","/auth/**","/js/**","/css/**","/images/**",img)
             .permitAll()
             .anyRequest()
             .authenticated()

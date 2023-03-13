@@ -41,6 +41,8 @@ public class ScheduleApiController {
     //build create schedule REST API
     @PostMapping("/api/scheduleCategory")
     public ResponseEntity<Schedule> scheduleCategorySave(@RequestBody Schedule schedule){
+
+
         return new ResponseEntity<Schedule>(scheduleService.scheduleCategorySave(schedule), HttpStatus.CREATED);
     }
 
