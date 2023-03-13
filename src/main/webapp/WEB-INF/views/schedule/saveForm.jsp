@@ -28,7 +28,7 @@
         <div class="container">
 
             <form>
-            <div class="col-1"><span class="rounded-lg border border-primary text-left"><input hidden id="category" value=1>카테고리</span></div>
+            <div class="col-1"><span class="rounded-lg border border-primary text-left"><input hidden id="category" value=${cate.name}>카테고리</span></div>
                         <br/>
 
                   <div class="form-group col-6">
