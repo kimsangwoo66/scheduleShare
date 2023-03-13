@@ -48,7 +48,7 @@
                             <div class="col-sm">
                                 <button>
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
-                                    <h4>${category[5].name}</h4>
+                                    <h4>${category[6].name}</h4>
                                 </button>
 
                                 <button>
