@@ -29,6 +29,14 @@ public class ScheduleService {
     @Autowired
     SchedulePhotoRepository schedulePhotoRepository;
 
+    //카테고리 다 가져오기
+    public List<Category> getAllCategories(){
+        return categoryRepository.findAll();
+    }
+
+    public Category categoryGetId(long id){
+        return categoryRepository.findById(id).orElseThrow();
+    }
 
 
     //스케줄 등록과 스케줄 카테고리 등록 구분해야 하기 떄문에
