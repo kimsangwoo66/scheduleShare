@@ -25,17 +25,19 @@
 //    },
 //
 //}
-const cateButton = document.getElementById("btn_cate");
+for (let i = 0; i < 10; i++) {
+const cateButton = document.getElementById("btn_cate") + i;
 cateButton.addEventListener("click", function(){
     const value = cateButton.value;
     console.log("@@@@@@@@" + value);
     alert(value);
+    alert();
 
 
 //    var d = "<c:out value=${cate.category_id}">";
 //    alert(d);
 })
-
+}
 //$(document).ready(function(){
 //    $('#click').click(function(){
 //
