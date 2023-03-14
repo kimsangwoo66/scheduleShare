@@ -37,7 +37,7 @@ public class scheduleController {
 
     // 메인화면 랜더링
     @GetMapping("/")
-    public String main(Model model, @PageableDefault(sort = "likeCount", direction = Sort.Direction.ASC) Pageable pageable){
+    public String main(Model model, @PageableDefault(sort = "likeCount", direction = Sort.Direction.DESC) Pageable pageable){
 
         Page<Schedule> schedules = scheduleService.schedulesSelect(pageable);
         System.out.println(schedules.getContent());
