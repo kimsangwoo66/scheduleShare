@@ -69,8 +69,9 @@ public class scheduleController {
 
 
     //스케줄 상세 화면 랜더링
-    @GetMapping("/details")
-    public String Details(){
+    @GetMapping("/details/{id}")
+    public String Details(@PathVariable Long id, Model model){
+        model.addAttribute("schedule", scheduleService.scheduleDetail(id));
         return "schedule/details";
     }
 

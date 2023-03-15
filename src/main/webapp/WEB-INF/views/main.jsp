@@ -14,7 +14,7 @@
 
 <div class="myslick justify-content-around">
         <c:forEach var="schedule" items="${schedules.content}">
-            <div class="card" style="width:300px;height:fit-content;color: royalblue;justify-content: space-around;align-items: center;margin: 30px;">
+            <div class="card" onclick="location.href='/details/${schedule.schedule_id}'" style="width:300px;height:fit-content;color: royalblue;justify-content: space-around;align-items: center;margin: 30px;cursor: pointer;">
                 <!--사용자가 가장 먼저 업로드 한 이미지를 대표사진으로 출력-->
                 <img src="<c:url value='/img/${schedule.schedulePhotos[0].fileName}'/>" class="card-img-top rounded" width="50%" height="50%">
 

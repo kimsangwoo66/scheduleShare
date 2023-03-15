@@ -111,6 +111,15 @@ public class ScheduleService {
 
     }
 
+    @Transactional
+    public Schedule scheduleDetail(Long id){
+        return scheduleRepository.findById(id).
+                orElseThrow(() -> {
+                    return new IllegalArgumentException("스케줄 상세보기 실패: schedule_id를 찾을 수 없음");
+                });
+
+    }
+
 
 
 }

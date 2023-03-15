@@ -2,9 +2,11 @@ $(document).ready(function () {
   $(".myslick").slick({
     centermode: true,
 
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
   });
 });
+
+
