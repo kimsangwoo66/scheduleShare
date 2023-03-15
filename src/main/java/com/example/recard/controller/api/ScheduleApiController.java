@@ -2,8 +2,8 @@ package com.example.recard.controller.api;
 
 
 import com.example.recard.config.auth.PrincipalDetail;
+import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
-import com.example.recard.domain.SchedulePhoto;
 import com.example.recard.dto.ResponseDto;
 import com.example.recard.dto.ScheduleDto;
 import com.example.recard.service.ScheduleService;
@@ -13,13 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -92,6 +89,10 @@ public class ScheduleApiController {
           }
 
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+    @PostMapping("/api/category")
+    public ResponseEntity<Category> category(@RequestBody long category){
+        return new ResponseEntity<Category>(scheduleService.categoryGetId(category), HttpStatus.OK);
     }
 
 
