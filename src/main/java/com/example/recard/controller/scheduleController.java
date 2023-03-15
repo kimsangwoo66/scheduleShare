@@ -1,5 +1,6 @@
 package com.example.recard.controller;
 
+import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
 import com.example.recard.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,18 @@ public class scheduleController {
 //    }
     @GetMapping("/category")
     public String Category(Model model){
-        List<Schedule> scheduleList = getAllSchedules();
-        System.out.println(scheduleList);
-        model.addAttribute("category", scheduleList);
+        List<Category> categoryList = getAllCategories();
+        for(Category category : categoryList){
+            System.out.println("category["+ category + "]");
+        }
+        model.addAttribute("category", categoryList);
         return "schedule/selectCategory";
+    }
+
+    //build get all category REST API
+    @GetMapping("/api/categories")
+    public List<Category> getAllCategories(){
+        return scheduleService.getAllCategories();
     }
 
 

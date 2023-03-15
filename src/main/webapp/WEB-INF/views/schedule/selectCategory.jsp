@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>
 
 
-    <input type="hidden" value="" name="name" id="name">
+<%--    <input type="hidden" value="" name="name" id="name"> --%>
     <div class="card justify-content-center text-center m-1">
         <br/>
 
@@ -11,59 +11,59 @@
                 <h2>일정 카테고리를 선택해주세요</h2>
                     <div class="card-detail">
                         <div class="col-sm">
-                            <button value="${category}" id="btn_cate1">
+                            <button value="${category[0].name}" onclick="cateBtn(value)">
                                 <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                 <h4>${category[0].name}</h4>
                             </button>
 
-                            <button value="${category}" id="btn_cate2">
+                            <button value="${category[1].name}" onclick="cateBtn(value)">
                                 <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                 <h4>${category[1].name}</h4>
                             </button>
 
 
                             <div class="col-sm">
-                            <button value="${category}" id="btn_cate">
+                            <button value="${category[2].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[2].name}</h4>
                                 </button>
 
-                            <button value="${category}" id="btn_cate">
+                            <button value="${category[3].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[3].name}</h4>
                                 </button>
                             </div>
                             <div class="col-sm">
-                                <button>
+                            <button value="${category[4].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[4].name}</h4>
                                 </button>
 
-                                <button>
+                            <button value="${category[5].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[5].name}</h4>
                                 </button>
                             </div>
 
                             <div class="col-sm">
-                                <button>
+                            <button value="${category[6].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[6].name}</h4>
                                 </button>
 
-                                <button>
+                            <button value="${category[7].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[7].name}</h4>
                                 </button>
                             </div>
 
                             <div class="col-sm">
-                                <button>
+                            <button value="${category[8].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[8].name}</h4>
                                 </button>
 
-                                <button>
+                            <button value="${category[9].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[9].name}</h4>
                                 </button>
