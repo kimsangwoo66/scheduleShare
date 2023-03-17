@@ -7,7 +7,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../layout/header.jsp" %>
+<%@ include file="layout/header.jsp" %>
 
 
 
@@ -60,4 +60,4 @@
 
 
 <script type="text/javascript" src="/js/main.js"></script>
-<%@ include file="../layout/footer.jsp" %>
+<%@ include file="layout/footer.jsp" %>

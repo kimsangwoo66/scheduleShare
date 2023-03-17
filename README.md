@@ -13,3 +13,6 @@ resource.path=" 이미지를 저장할 서버 경로 "
 img.path=/img/**
 
 
+#### [details.js] ####
+경로 수정 필요
+document.location.href = "http://localhost:8080/auth/login"

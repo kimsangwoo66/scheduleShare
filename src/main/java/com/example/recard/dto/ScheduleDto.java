@@ -18,7 +18,7 @@ public class ScheduleDto {
     private Long schedule_id;
     private String title;
     private String content;
-    private Integer likeCount;
+    private int likeCount;
 
     private int state;
 

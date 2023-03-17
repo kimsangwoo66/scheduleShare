@@ -5,6 +5,8 @@ import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
 import com.example.recard.domain.UserLike;
 import com.example.recard.service.ScheduleService;
+import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +25,7 @@ import java.util.Optional;
 
 @Controller
 public class scheduleController {
+    Logger logger;
     @Autowired
     ScheduleService scheduleService;
 
@@ -45,12 +48,20 @@ public class scheduleController {
     public String main(Model model, @PageableDefault(sort = "likeCount", direction = Sort.Direction.DESC) Pageable pageable){
 
         Page<Schedule> schedules = scheduleService.schedulesSelect(pageable);
-        System.out.println(schedules.getContent());
+        //System.out.println(schedules.getContent());
         model.addAttribute("schedules", schedules);
 
         return "main";
     }
 
+    // 메인화면 전체 랜더링
+    @GetMapping("/schedules/all")            //한페이지에 스케줄 12개씩
+    public String allschedules(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<Schedule> schedules = scheduleService.schedulesSelect(pageable);
+        model.addAttribute("schedules", schedules);
+        return "mainall";
+
+    }
 
 
     //스케줄 등록 화면 랜더링
@@ -107,13 +118,21 @@ public class scheduleController {
 
     //마이스케줄 페이지
     @GetMapping("/myList")
-    public String MyList(){
+    public String MyList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
+                         @AuthenticationPrincipal PrincipalDetail principal){
+
+
+        Page<Schedule> schedules = scheduleService.mySchedulesSelect(pageable, principal.getUser().getUser_id());
+        model.addAttribute("schedules", schedules);
         return "user/myList";
     }
 
     //좋아요 화면
     @GetMapping("/myHeartList")
-    public String MyHeartList(){
+    public String MyHeartList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
+                              @AuthenticationPrincipal PrincipalDetail principal){
+        //Page<UserLike> schedules = scheduleService.heartScheduleSelect(pageable, principal.getUser().getUser_id());
+        //model.addAttribute("schedules", schedules);
         return "user/myHeartList";
     }
 

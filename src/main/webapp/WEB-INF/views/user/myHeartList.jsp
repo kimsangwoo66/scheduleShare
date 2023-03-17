@@ -1,114 +1,55 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../layout/header.jsp" %>
+<%@ include file="layout/header.jsp" %>
 
-    <p class="m-4">전체: 숫자</p>
-    <div class="row justify-content-center m-4">
 
-    <div class="card-columns">
 
-            <div class="card" style="width:300px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+<div class="d-flex flex-row ml-3">전체: ${schedules.totalElements}</div>
+<div class="row">
+        <c:forEach var="schedule" items="${schedules.content}">
+            <div class="card" onclick="location.href='/details/${schedule.schedule_id}'" style="width:300px;height:fit-content;color: royalblue;justify-content: space-around;align-items: center;margin: 30px;cursor: pointer;">
+                <!--사용자가 가장 먼저 업로드 한 이미지를 대표사진으로 출력-->
+                <div class = "embed-responsive embed-responsive-4by3">
+                <img src="<c:url value='/img/${schedule.schedulePhotos[0].fileName}'/>" class="card-img-top embed-responsive-item rounded">
+                </div>
                 <div class="card-body">
-                    <h4 class="card-title">스케줄러 제목</h4>
-
-                            <span class="rounded-lg border border-primary">카테고리</span>
-                            <span class="rounded-lg border border-primary">소요시간</span>
-                            <span class="rounded-lg border border-primary">소요금액</span>
+                    <h4 class="card-title">${schedule.title}</h4>
+                            <span class="rounded-lg border border-primary">${schedule.category.name}</span>
+                            <span class="rounded-lg border border-primary">${schedule.timeCost}</span>
+                            <span class="rounded-lg border border-primary">${schedule.moneyCost}</span>
                             <br/>
                             <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
-
+                            <i class="fas fa-heart"></i>&nbsp;${schedule.likeCount}
                 </div>
             </div>
+        </c:forEach>
+</div>
 
+    <!-- 페이징 처리 -->
+    <ul class="pagination justify-content-center">
+        <c:choose>
+            <c:when test="${schedules.first}">
+                <li class="page-item disabled"><a class="page-link" href="?page=${schedules.number-1}">이전</a></li>
+            </c:when>
 
-            <div class="card" style="width:300px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">스케줄러 제목</h4>
+            <c:otherwise>
+                <li class="page-item"><a class="page-link" href="?page=${schedules.number-1}">이전</a></li>
+            </c:otherwise>
+        </c:choose>
 
-                            <span class="rounded-lg border border-primary">카테고리</span>
-                            <span class="rounded-lg border border-primary">소요시간</span>
-                            <span class="rounded-lg border border-primary">소요금액</span>
-                            <br/>
-                            <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
+        <c:choose>
+            <c:when test="${schedules.last}">
+                <li class="page-item disabled"><a class="page-link" href="?page=${schedules.number+1}">다음</a></li>
+            </c:when>
 
-                </div>
-            </div>
-
-            <div class="card" style="width:300px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">스케줄러 제목</h4>
-
-                            <span class="rounded-lg border border-primary">카테고리</span>
-                            <span class="rounded-lg border border-primary">소요시간</span>
-                            <span class="rounded-lg border border-primary">소요금액</span>
-                            <br/>
-                            <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
-
-                </div>
-            </div>
-
-
-            <div class="card" style="width:300px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">스케줄러 제목</h4>
-
-                            <span class="rounded-lg border border-primary">카테고리</span>
-                            <span class="rounded-lg border border-primary">소요시간</span>
-                            <span class="rounded-lg border border-primary">소요금액</span>
-                            <br/>
-                            <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
-
-                </div>
-            </div>
-
-
-            <div class="card" style="width:300px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">스케줄러 제목</h4>
-
-                            <span class="rounded-lg border border-primary">카테고리</span>
-                            <span class="rounded-lg border border-primary">소요시간</span>
-                            <span class="rounded-lg border border-primary">소요금액</span>
-                            <br/>
-                            <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
-
-                </div>
-            </div>
-
-
-            <div class="card" style="width:300px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">스케줄러 제목</h4>
-
-                            <span class="rounded-lg border border-primary">카테고리</span>
-                            <span class="rounded-lg border border-primary">소요시간</span>
-                            <span class="rounded-lg border border-primary">소요금액</span>
-                            <br/>
-                            <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
-
-                </div>
-            </div>
-        </div>
-    </div>
+            <c:otherwise>
+                <li class="page-item"><a class="page-link" href="?page=${schedules.number+1}">다음</a></li>
+            </c:otherwise>
+        </c:choose>
+    </ul>
 
     <br/>
     <br/>
 
-    <div>
-        <br/>
-        <br/>
-    </div>
 
-<%@ include file="../layout/footer.jsp" %>
+<script type="text/javascript" src="/js/main.js"></script>
+<%@ include file="layout/footer.jsp" %>

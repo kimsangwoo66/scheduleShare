@@ -88,7 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(new AjaxAuthenticationEntryPoint("/auth/login"))
                 .and()
                 .authorizeRequests()
-                .antMatchers("/","/auth/**","/js/**","/css/**","/images/**","/details/**",img)
+                .antMatchers("/","/schedules/all","/auth/**","/js/**","/css/**","/images/**","/details/**",img)
                 .permitAll()
                 .antMatchers("/api/**").authenticated()
                 .anyRequest()

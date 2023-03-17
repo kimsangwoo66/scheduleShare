@@ -11,13 +11,14 @@
 
 
 
-
+<div class="d-flex flex-row-reverse mr-5"><a href="/schedules/all" >전체보기</a></div>
 <div class="myslick justify-content-around">
         <c:forEach var="schedule" items="${schedules.content}">
             <div class="card" onclick="location.href='/details/${schedule.schedule_id}'" style="width:300px;height:fit-content;color: royalblue;justify-content: space-around;align-items: center;margin: 30px;cursor: pointer;">
                 <!--사용자가 가장 먼저 업로드 한 이미지를 대표사진으로 출력-->
-                <img src="<c:url value='/img/${schedule.schedulePhotos[0].fileName}'/>" class="card-img-top rounded" width="50%" height="50%">
-
+                <div class = "embed-responsive embed-responsive-4by3">
+                    <img src="<c:url value='/img/${schedule.schedulePhotos[0].fileName}'/>" class="card-img-top embed-responsive-item rounded">
+                </div>
                 <div class="card-body">
                     <h4 class="card-title">${schedule.title}</h4>
                             <span class="rounded-lg border border-primary">${schedule.category.name}</span>
