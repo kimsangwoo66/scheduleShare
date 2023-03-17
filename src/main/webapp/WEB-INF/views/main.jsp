@@ -25,7 +25,7 @@
                             <span class="rounded-lg border border-primary">${schedule.moneyCost}</span>
                             <br/>
                             <br/>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-heart"></i></a>[숫자]
+                            <i class="fas fa-heart"></i>&nbsp;${schedule.likeCount}
                 </div>
             </div>
 

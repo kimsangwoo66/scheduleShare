@@ -1,11 +1,17 @@
 package com.example.recard.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
 public class UserLike {
 
     //기본키 직접 할당해야함
@@ -14,7 +20,7 @@ public class UserLike {
     //EntityManager.persist(member);
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer like_id;
+    private Long like_id;
 
     @ManyToOne
     @JoinColumn(name= "schedule_id")

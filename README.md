@@ -1,5 +1,5 @@
 # scheduleShare
-주말 휴식 스케줄 추천 서비스
+주말 스케줄 공유 서비스
 
 
 ## config
@@ -9,7 +9,7 @@
 #### [application.properties]
 ####server external path setting .. for upload imgs##
 
-resource.path=/Users/gimsang-u/Desktop/study/img/
+resource.path=" 이미지를 저장할 서버 경로 "
 img.path=/img/**
 
 

@@ -1,23 +1,3 @@
-//        function readImage(input) {
-//    // 인풋 태그에 파일이 있는 경우
-//        if(input.files && input.files[0]) {
-//            // 이미지 파일인지 검사 (생략)
-//            // FileReader 인스턴스 생성
-//            const reader = new FileReader()
-//            // 이미지가 로드가 된 경우
-//            reader.onload = e => {
-//                const previewImage = document.getElementById("preview-image")
-//                previewImage.src = e.target.result
-//            }
-//            // reader가 이미지 읽도록 하기
-//            reader.readAsDataURL(input.files[0])
-//            }
-//        }
-//        // input file에 change 이벤트 부여
-//        const inputImage = document.getElementById("file")
-//        inputImage.addEventListener("change", e => {
-//            readImage(e.target)
-//        })
 $(document).ready(function () {
 
   // 스케줄 상세 이미지 js
@@ -26,3 +6,95 @@ $(document).ready(function () {
 
   });
 });
+
+function hClick() {
+  var element = document.getElementById("heart");
+  heartname = element.className;
+  console.log(element.className);
+
+  var csrfToken = $("meta[name='_csrf']").attr("content");
+  var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+  let data = {
+              schedule_id : parseInt($("#schedule_id").val())
+
+             };
+  console.log(JSON.stringify(data));
+
+  //빈 하트일 경우
+  if (heartname === "far fa-heart") {
+    //클래스 이름 변경
+
+       $.ajax({
+              type:"POST",
+              url:"/api/likecnt",
+              data:data,
+              /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+              beforeSend: function(xhr) {
+                           if(csrfToken && csrfHeader){
+                               xhr.setRequestHeader(csrfHeader, csrfToken);
+                           }
+
+                      },
+              success: function(data) {
+                          // AJAX 요청이 성공했을 때 실행할 코드
+                          //좋아요 추가 성공
+                         console.log("좋아요 추가")
+
+                         //채워진 하트로 변경
+                         element.className = "fa fa-heart";
+                      },
+              error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("실패");
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+
+                    //서버별 경로 코드 수정 필요
+                    document.location.href = "http://localhost:8080/auth/login"
+
+              }
+
+       });
+
+
+  }
+
+  //채워진 하트일 경우
+  else {
+    $.ajax({
+              type:"POST",
+              url:"/api/likecnt",
+              data:data,
+              /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+              beforeSend: function(xhr) {
+                           if(csrfToken && csrfHeader){
+                               xhr.setRequestHeader(csrfHeader, csrfToken);
+                           }
+
+                      },
+              success: function(data) {
+                          // AJAX 요청이 성공했을 때 실행할 코드
+                          //좋아요 감소 성공
+                         console.log("좋아요 감소 성공")
+                         //채워진 하트로 변경
+                         element.className = "far fa-heart";
+                      },
+              error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("실패");
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                    // AJAX 요청이 실패했을 때 실행할 코드
+                    alert("로그인이 필요합니다.");
+                    document.location.href = "http://localhost:8080/auth/login"
+
+              }
+
+           });
+
+    element.className = "far fa-heart";
+  }
+
+
+}

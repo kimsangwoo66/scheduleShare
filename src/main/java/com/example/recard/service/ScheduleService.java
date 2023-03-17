@@ -1,13 +1,8 @@
 package com.example.recard.service;
 
-import com.example.recard.domain.Category;
-import com.example.recard.domain.Schedule;
-import com.example.recard.domain.SchedulePhoto;
-import com.example.recard.domain.User;
+import com.example.recard.domain.*;
 import com.example.recard.dto.ScheduleDto;
-import com.example.recard.repository.CategoryRepository;
-import com.example.recard.repository.SchedulePhotoRepository;
-import com.example.recard.repository.ScheduleRepository;
+import com.example.recard.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +23,9 @@ public class ScheduleService {
 
     @Autowired
     SchedulePhotoRepository schedulePhotoRepository;
+
+    @Autowired
+    UserLikeRepository userLikeRepository;
 
     //카테고리 다 가져오기
     public List<Category> getAllCategories(){
@@ -125,6 +123,65 @@ public class ScheduleService {
                 orElseThrow(() -> {
                     return new IllegalArgumentException("스케줄 상세보기 실패: schedule_id를 찾을 수 없음");
                 });
+
+    }
+
+    @Transactional
+    public UserLike likeYn(Long scheduleId, User user){
+        Optional<UserLike> userObj = userLikeRepository.findByScheduleIdAndUserId(scheduleId, user.getUser_id());
+        if(userObj.isEmpty())
+        {
+            System.out.println("userObj null 확인");
+            return null;
+        }
+        UserLike userLike = userObj.get();
+        return userLike;
+
+
+    }
+
+    @Transactional
+    public void likeCheck(Long scheduleId, User user){
+        int likeUp;
+        Long userId = user.getUser_id();
+        Optional<UserLike> likeObj = userLikeRepository.findByScheduleIdAndUserId(scheduleId, userId);
+        Optional<Schedule> schedule = scheduleRepository.findById(scheduleId);
+
+
+        //scheduleId와 userId값이 존재하는 UserLike가 없을 경우
+        if(likeObj.isEmpty())
+        {
+            UserLike userLike = UserLike.builder()
+                    .user(user)
+                    .schedule(schedule.get())
+                    .build();
+
+
+            userLikeRepository.save(userLike);
+
+            likeUp = schedule.get().getLikeCount() + 1;
+
+            System.out.println("증가된결과 하트 개수:" + likeUp);
+
+            schedule.get().setLikeCount(likeUp);
+            scheduleRepository.save(schedule.get());
+
+        }else{
+            //scheduleId와 userId값이 존재하는 likeId가 있을 경우
+            //likeId 제거
+            userLikeRepository.delete(likeObj.get());
+
+            //해당 scheduleId 객체의 likeCount 1 감소
+            likeUp = schedule.get().getLikeCount() - 1;
+
+            System.out.println("감소된 결과 하트 개수:" + likeUp);
+            schedule.get().setLikeCount(likeUp);
+            scheduleRepository.save(schedule.get());
+
+
+        }
+
+
 
     }
 

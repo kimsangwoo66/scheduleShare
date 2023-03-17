@@ -18,12 +18,7 @@ public class ProfilePhotoRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
-    @Test
-    public void test(){
-        ProfilePhoto byUserId = profileRepository.findByfileName("dname");
-        System.out.println(byUserId.toString());
 
-    }
 
 
 }

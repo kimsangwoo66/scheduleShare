@@ -15,10 +15,13 @@
     <sec:authentication property="principal" var="principal" />
 </sec:authorize>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <sec:csrfMetaTags />
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 

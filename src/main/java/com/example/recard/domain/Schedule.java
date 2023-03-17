@@ -1,16 +1,16 @@
 package com.example.recard.domain;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@DynamicUpdate
+@DynamicInsert
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +29,7 @@ public class Schedule {
     private String content;
 
     @ColumnDefault("0")
-    private Long likeCount;
+    private int likeCount;
 
     @Column(nullable = false, length = 2)
     private int state;

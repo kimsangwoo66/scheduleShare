@@ -15,6 +15,9 @@
 
                 <section>
                       <div>
+
+                        <input type="hidden" id="schedule_id" value="${schedule.schedule_id}"/>
+                        <input type="hidden" id="user_id" value="${schedule.user.user_id}"/>
                         <h3>${schedule.title}<h3/>
                       </div>
 
@@ -25,7 +28,7 @@
                       </div>
 
 
-                        <div class="d-flex flex-row-reverse"><span class="rounded border border-primary text-left" style="font-size: medium;">카테고리</span></div>
+                        <div class="d-flex flex-row-reverse"><span class="rounded border border-primary text-left" style="font-size: medium;">${schedule.category.name}</span></div>
 
                         <div class="d-flex flex-row-reverse">
                         <input type="text" name="timeCost" value="${schedule.timeCost}" readonly>
@@ -73,7 +76,16 @@
             <button class="my-button text-center" onclick="location.href='/'">뒤로</button>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="h_container" onclick="hClick()">
-                <i id="heart" class="far fa-heart"></i>
+
+                <c:choose>
+                      <c:when test="${empty userlike}">
+                        <i id="heart" class="far fa-heart"></i>
+                      </c:when>
+                       <c:otherwise>
+                        <i id="heart" class="fa fa-heart"></i>
+                       </c:otherwise>
+                </c:choose>
+
           </button>
         </div>
 
