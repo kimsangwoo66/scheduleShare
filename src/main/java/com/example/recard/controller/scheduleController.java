@@ -5,7 +5,6 @@ import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
 import com.example.recard.domain.UserLike;
 import com.example.recard.service.ScheduleService;
-import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +17,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class scheduleController {
@@ -112,10 +113,6 @@ public class scheduleController {
         return "schedule/details";
     }
 
-
-
-
-
     //마이스케줄 페이지
     @GetMapping("/myList")
     public String MyList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
@@ -134,6 +131,19 @@ public class scheduleController {
         //Page<UserLike> schedules = scheduleService.heartScheduleSelect(pageable, principal.getUser().getUser_id());
         //model.addAttribute("schedules", schedules);
         return "user/myHeartList";
+    }
+
+
+    @RequestMapping("/schedules")
+    public String view(@ModelAttribute("category") Category category, Model model, HttpServletRequest request)
+//    public String view(@RequestParam("cate") String cate, ModelMap model, HttpServletRequest request)
+
+            throws Exception{
+        request.setCharacterEncoding("utf-8");
+        String reqCate = request.getParameter("cate");
+        model.addAttribute("category", reqCate);
+        System.out.println(reqCate);
+        return "/schedules";
     }
 
 }

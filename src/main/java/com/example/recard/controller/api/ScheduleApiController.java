@@ -10,12 +10,10 @@ import com.example.recard.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -108,6 +106,7 @@ public class ScheduleApiController {
         scheduleService.likeCheck(schedule_id, principal.getUser());
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
+
 
 
 
