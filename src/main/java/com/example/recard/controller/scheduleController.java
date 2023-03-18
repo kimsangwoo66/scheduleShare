@@ -16,10 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -71,11 +68,7 @@ public class scheduleController {
       return "schedule/saveForm";
     }
 
-    //스케줄 카테고리 등록 화면 랜더링
-//    @GetMapping("/category")
-//    public String Category(){
-//        return "schedule/selectCategory";
-//    }
+
     @GetMapping("/category")
     public String Category(Model model){
         List<Category> categoryList = getAllCategories();
@@ -84,6 +77,14 @@ public class scheduleController {
         }
         model.addAttribute("category", categoryList);
         return "schedule/selectCategory";
+    }
+
+    //토토영 참고!
+    @PostMapping("/api/category")
+    public String sendCate(Model model, @RequestParam("cate") String cateName){
+        System.out.println(cateName);
+        model.addAttribute("cateName", cateName);
+        return "schedule/saveForm";
     }
 
     //build get all category REST API
@@ -113,7 +114,7 @@ public class scheduleController {
         return "schedule/details";
     }
 
-    //마이스케줄 페이지
+    //마이스케줄
     @GetMapping("/myList")
     public String MyList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
                          @AuthenticationPrincipal PrincipalDetail principal){
@@ -124,12 +125,12 @@ public class scheduleController {
         return "user/myList";
     }
 
-    //좋아요 화면
+    //하트 스케줄함
     @GetMapping("/myHeartList")
-    public String MyHeartList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
+    public String MyHeartList(Model model, @PageableDefault(size = 12,sort = "schedule.likeCount", direction = Sort.Direction.DESC)Pageable pageable,
                               @AuthenticationPrincipal PrincipalDetail principal){
-        //Page<UserLike> schedules = scheduleService.heartScheduleSelect(pageable, principal.getUser().getUser_id());
-        //model.addAttribute("schedules", schedules);
+        Page<UserLike> userLikes = scheduleService.heartScheduleSelect(pageable, principal.getUser().getUser_id());
+        model.addAttribute("userLikes", userLikes);
         return "user/myHeartList";
     }
 

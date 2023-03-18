@@ -89,10 +89,12 @@ public class ScheduleApiController {
     }
 
 
-    @PostMapping("/api/category")
-    public ResponseEntity<Category> category(@RequestBody long category){
-        return new ResponseEntity<Category>(scheduleService.categoryGetId(category), HttpStatus.OK);
-    }
+//    @PostMapping("/api/category")
+//    public ResponseEntity<Category> category(@RequestBody long category){
+//        return new ResponseEntity<Category>(scheduleService.categoryGetId(category), HttpStatus.OK);
+//    }
+
+
 
 
 

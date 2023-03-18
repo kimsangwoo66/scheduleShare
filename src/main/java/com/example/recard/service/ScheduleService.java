@@ -124,12 +124,6 @@ public class ScheduleService {
 
     }
 
-//    @Transactional(readOnly = true)
-//    public List<Schedule> mySchedulesSelect(Long userId){
-//        List<Schedule> byMyScheduleAll = scheduleRepository.findByMyScheduleAll(userId);
-//        return byMyScheduleAll;
-//
-//    }
 
     @Transactional(readOnly = true)
     public Page<UserLike> heartScheduleSelect(Pageable pageable, Long userId){

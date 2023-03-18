@@ -73,7 +73,7 @@
         </div>
 
         <div class="container text-center">
-            <button class="my-button text-center" onclick="location.href='/'">뒤로</button>
+            <button class="my-button text-center" onclick="history.back();">뒤로</button>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="h_container" onclick="hClick()">
 

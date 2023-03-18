@@ -17,4 +17,7 @@ public interface UserLikeRepository extends JpaRepository<UserLike, Long> {
     //좋아요 스케줄 확인 쿼리 진행중
     @Query("select s from UserLike s where s.user.user_id = :user_id")
     Page<UserLike> findByUserIdAll(Pageable pageable, @Param("user_id") Long userId);
+
+
+
 }
