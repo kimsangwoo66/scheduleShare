@@ -2,7 +2,6 @@ package com.example.recard.controller.api;
 
 
 import com.example.recard.config.auth.PrincipalDetail;
-import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
 import com.example.recard.dto.ResponseDto;
 import com.example.recard.dto.ScheduleDto;
@@ -89,6 +88,7 @@ public class ScheduleApiController {
     }
 
 
+<<<<<<< Updated upstream
 //    @PostMapping("/api/category")
 //    public ResponseEntity<Category> category(@RequestBody long category){
 //        return new ResponseEntity<Category>(scheduleService.categoryGetId(category), HttpStatus.OK);
@@ -98,6 +98,8 @@ public class ScheduleApiController {
 
 
 
+=======
+>>>>>>> Stashed changes
     @PostMapping("/api/likecnt")
     @ResponseBody
     public ResponseDto<Integer> likeCnt(Long schedule_id, @AuthenticationPrincipal PrincipalDetail principal)  {
