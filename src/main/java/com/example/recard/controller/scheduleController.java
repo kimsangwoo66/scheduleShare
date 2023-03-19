@@ -1,7 +1,9 @@
 package com.example.recard.controller;
 
+import com.example.recard.config.auth.PrincipalDetail;
 import com.example.recard.domain.Category;
 import com.example.recard.domain.Schedule;
+import com.example.recard.domain.UserLike;
 import com.example.recard.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,12 +12,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< Updated upstream
-=======
 import org.springframework.ui.ModelMap;
->>>>>>> Stashed changes
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,10 +78,10 @@ public class scheduleController {
 //    }
 
     //카테고리별 스케줄 분류된 화면
-    @GetMapping("")
-    public String sortedCategory(){
-
-    }
+//    @GetMapping("")
+//    public String sortedCategory(){
+//
+//    }
 
 
     @GetMapping("/category")
@@ -119,14 +119,11 @@ public class scheduleController {
 
     //하트 스케줄함
     @GetMapping("/myHeartList")
-<<<<<<< Updated upstream
     public String MyHeartList(Model model, @PageableDefault(size = 12,sort = "schedule.likeCount", direction = Sort.Direction.DESC)Pageable pageable,
                               @AuthenticationPrincipal PrincipalDetail principal){
         Page<UserLike> userLikes = scheduleService.heartScheduleSelect(pageable, principal.getUser().getUser_id());
         model.addAttribute("userLikes", userLikes);
-=======
-    public String MyHeartList(){
->>>>>>> Stashed changes
+
         return "user/myHeartList";
     }
 
