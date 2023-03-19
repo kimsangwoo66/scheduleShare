@@ -121,8 +121,21 @@ public class scheduleController {
 
     // 스케줄 상세 화면 랜더링
     @GetMapping("/details/{id}")
-    public String Details(@PathVariable Long id, Model model){
-        model.addAttribute("schedule", scheduleService.scheduleDetail(id));
+    public String Details(@PathVariable Long id, Model model,@AuthenticationPrincipal PrincipalDetail principal){
+
+        //클라이언트가 비로그인 상태일 경우
+        if(principal == null || principal.getUser() == null || principal.getUser().getUser_id() == null) {
+            model.addAttribute("schedule", scheduleService.scheduleDetail(id));
+
+        }
+        else{
+            model.addAttribute("schedule", scheduleService.scheduleDetail(id));
+
+            UserLike userLike = scheduleService.likeYn(id, principal.getUser());
+            model.addAttribute("userlike", userLike);
+
+        }
+
         return "schedule/details";
     }
 
