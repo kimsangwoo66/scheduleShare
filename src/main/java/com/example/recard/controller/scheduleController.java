@@ -77,12 +77,6 @@ public class scheduleController {
 //        return "schedule/"
 //    }
 
-    //카테고리별 스케줄 분류된 화면
-//    @GetMapping("")
-//    public String sortedCategory(){
-//
-//    }
-
 
     @GetMapping("/category")
     public String Category(Model model){
@@ -91,7 +85,7 @@ public class scheduleController {
             System.out.println("category["+ category + "]");
         }
         model.addAttribute("category", categoryList);
-        return "schedule/sortCategory";
+        return "schedule/saveCategory";
     }
 
 

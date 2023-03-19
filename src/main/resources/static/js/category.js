@@ -5,6 +5,5 @@ function cateBtn(value) {
   //cate라는 변수에
   cate.attr("action", "/api/category");
   cate.attr("method", "POST");
-  cate.submit()
-
+  cate.submit();
 }

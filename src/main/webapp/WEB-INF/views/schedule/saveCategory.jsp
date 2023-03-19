@@ -11,55 +11,52 @@
                     <div class="card-detail">
                         <div class="col-sm">
 
-                            <button id="cate" name="cate" value="${category[0].name}" onclick="cateBtn(value)">
-
+                            <button type="submit" id="cate" name="cate" value="${category[0].name}" onclick="cateBtn(value)">
                                 <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                 <h4>${category[0].name}</h4>
                             </button>
 
-                            <button type="submit" name="cate" id="cate" value="${category[1].name}" onclick="cateBtn(value)">
+
+                            <button type="submit" id="cate" name="cate" value="${category[1].name}" onclick="cateBtn(value)">
                                 <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                 <h4>${category[1].name}</h4>
                             </button>
-
+                        </div>
 
                             <div class="col-sm">
 
-                                <button id="cate" name="cate" value="${category[2].name}" onclick="cateBtn(value)">
-                                        <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
-                                        <h4>${category[2].name}</h4>
+                            <button type="submit" id="cate" name="cate" value="${category[2].name}" onclick="cateBtn(value)">
+                                    <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
+                                    <h4>${category[2].name}</h4>
                                 </button>
 
-                                <button id="cate" name="cate" value="${category[3].name}" onclick="cateBtn(value)">
-                                        <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
-                                        <h4>${category[3].name}</h4>
+                            <button type="submit" id="cate" name="cate" value="${category[3].name}" onclick="cateBtn(value)">
+                                    <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
+                                    <h4>${category[3].name}</h4>
                                 </button>
                             </div>
                             <div class="col-sm">
-
-                                <button id="cate" name="cate" value="${category[4].name}" onclick="cateBtn(value)">
-                                        <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
-                                        <h4>${category[4].name}</h4>
+                            <button type="submit" id="cate" name="cate" value="${category[4].name}" onclick="cateBtn(value)">
+                                    <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
+                                    <h4>${category[4].name}</h4>
                                 </button>
 
+                            <button type="submit" id="cate" name="cate" value="${category[5].name}" onclick="cateBtn(value)">
+                                    <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
+                                    <h4>${category[5].name}</h4>
 
-                                <button id="cate" name="cate" value="${category[5].name}" onclick="cateBtn(value)">
-
-                                        <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
-                                        <h4>${category[5].name}</h4>
                                 </button>
                             </div>
 
                             <div class="col-sm">
 
-                                <button id="cate" name="cate" value="${category[6].name}" onclick="cateBtn(value)">
+                                <button type="submit" id="cate" name="cate" value="${category[6].name}" onclick="cateBtn(value)">
 
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[6].name}</h4>
                                 </button>
 
-
-                                <button id="cate" name="cate" value="${category[7].name}" onclick="cateBtn(value)">
+                                <button type="submit" id="cate" name="cate" value="${category[7].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[7].name}</h4>
                                 </button>
@@ -67,14 +64,13 @@
 
                             <div class="col-sm">
 
-                                <button id="cate" name="cate" value="${category[8].name}" onclick="cateBtn(value)">
+                                <button type="submit" id="cate" name="cate" value="${category[8].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[8].name}</h4>
                                 </button>
 
 
-                                <button id="cate" name="cate" value="${category[9].name}" onclick="cateBtn(value)">
-
+                            <button id="cate" name="cate" value="${category[9].name}" onclick="cateBtn(value)">
                                     <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                     <h4>${category[9].name}</h4>
                                 </button>
