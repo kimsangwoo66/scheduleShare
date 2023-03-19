@@ -10,8 +10,8 @@
                 <h2>일정 카테고리를 선택해주세요</h2>
                     <div class="card-detail">
                         <div class="col-sm">
-
-                            <button type="submit" id="cate" name="cate" value="${category[0].name}" onclick="cateBtn(value)">
+                            <input type="hidden" id="cateId" name="cateId" value="${category[0].category_id}" hidden>
+                            <button type="submit" id="cateName" name="cateName" value="${category[0].name}" onclick="cateBtn(value)">
                                 <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                 <h4>${category[0].name}</h4>
                             </button>

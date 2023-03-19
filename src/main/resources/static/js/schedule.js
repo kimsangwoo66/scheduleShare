@@ -2,6 +2,15 @@ var fileNo = 0;
 var filesArr = new Array();
 var filelist = "";
 
+
+//category 값 string 타입에서 -> int 타입으로 형 변환
+const cateIdString = document.getElementById("category").value; // input 요소의 value 값인 "123"을 가져와서 변수에 저장합니다.
+console.log("cateIdString: " + cateIdString)
+const cateIdInt = parseInt(cateIdString);
+document.getElementById("category").value = cateIdInt;
+
+
+
 function addFile(obj) {
   var maxFileCnt = 3; // 첨부파일 최대 개수
   var attFileCnt = document.querySelectorAll(".filebox").length; // 기존 추가된 첨부파일 개수

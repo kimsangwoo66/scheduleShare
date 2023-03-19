@@ -147,11 +147,16 @@ public class scheduleController {
     }
 
     @PostMapping("/api/category")
-    public String category(@RequestParam("cate") String categ, ModelMap model, HttpServletRequest request){
-//        String reqCate = request.getParameter("cate");
-        System.out.println("categ["+categ+"]");
-        String req = request.getParameter("cate");
-        model.addAttribute("category", req);
+    public String category(@RequestParam("cateId") String cateId,
+                           @RequestParam("cateName") String cateName,
+                            ModelMap model){
+//
+//        System.out.println("cateId: " + cateIdstr);
+//        System.out.println("cateName: " + cateName);
+//
+//        Long cateId = Long.parseLong(cateIdstr);
+        model.addAttribute("cateName", cateName);
+        model.addAttribute("cateId", cateId);
         return "/schedule/saveForm";
     }
 
