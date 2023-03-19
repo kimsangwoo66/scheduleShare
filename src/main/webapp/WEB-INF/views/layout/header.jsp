@@ -177,7 +177,7 @@
                                         <a class="nav-link" href="/">홈</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">카테고리</a>
+                                        <a class="nav-link" href="/cateSelection">카테고리</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/category">스케줄 생성</a>
@@ -213,7 +213,7 @@
                                         <a class="nav-link" href="/">홈</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">카테고리</a>
+                                        <a class="nav-link" href="/cateSelection">카테고리</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/category">스케줄 생성</a>

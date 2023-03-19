@@ -34,7 +34,6 @@
 
 
                         <br/>
-
                   <div class="form-group col-6">
                     <input type="username" class="form-control" placeholder="제목을 입력하세요" id="title">
                   </div>

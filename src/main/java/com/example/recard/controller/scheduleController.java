@@ -72,10 +72,31 @@ public class scheduleController {
     }
 
     //카테고리 분류 선택 화면
-//    @GetMapping("")
-//    public String choiceCategory(){
-//        return "schedule/"
-//    }
+    @GetMapping("/cateSelection")
+    public String choiceCategory(Model model){
+        List<Category> categoryList = getAllCategories();
+
+        model.addAttribute("category", categoryList);
+        return "schedule/selectCategory";
+    }
+
+    @PostMapping("/api/cateSelection")
+    public String cateChoose(@RequestParam("cate") String cateName){
+
+        System.out.println(cateName);
+
+        return "mainCategory";
+    }
+
+
+    //전체 스케줄 화면 랜더링
+    @GetMapping("/schedules/all")            //한페이지에 스케줄 12개씩
+    public String allschedules(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<Schedule> schedules = scheduleService.schedulesSelect(pageable);
+        model.addAttribute("schedules", schedules);
+        return "mainall";
+
+    }
 
 
     @GetMapping("/category")
@@ -107,7 +128,11 @@ public class scheduleController {
 
     //마이스케줄
     @GetMapping("/myList")
-    public String MyList(){
+    public String MyList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
+                         @AuthenticationPrincipal PrincipalDetail principal){
+
+        Page<Schedule> schedules = scheduleService.mySchedulesSelect(pageable, principal.getUser().getUser_id());
+        model.addAttribute("schedules", schedules);
         return "user/myList";
     }
 
