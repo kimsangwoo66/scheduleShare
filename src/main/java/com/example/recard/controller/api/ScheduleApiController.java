@@ -88,18 +88,6 @@ public class ScheduleApiController {
     }
 
 
-<<<<<<< Updated upstream
-//    @PostMapping("/api/category")
-//    public ResponseEntity<Category> category(@RequestBody long category){
-//        return new ResponseEntity<Category>(scheduleService.categoryGetId(category), HttpStatus.OK);
-//    }
-
-
-
-
-
-=======
->>>>>>> Stashed changes
     @PostMapping("/api/likecnt")
     @ResponseBody
     public ResponseDto<Integer> likeCnt(Long schedule_id, @AuthenticationPrincipal PrincipalDetail principal)  {
