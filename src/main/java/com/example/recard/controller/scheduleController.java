@@ -68,6 +68,18 @@ public class scheduleController {
       return "schedule/saveForm";
     }
 
+    //카테고리 분류 선택 화면
+//    @GetMapping("")
+//    public String choiceCategory(){
+//        return "schedule/"
+//    }
+
+    //카테고리별 스케줄 분류된 화면
+    @GetMapping("")
+    public String sortedCategory(){
+
+    }
+
 
     @GetMapping("/category")
     public String Category(Model model){
@@ -79,22 +91,17 @@ public class scheduleController {
         return "schedule/selectCategory";
     }
 
-    //토토영 참고!
-    @PostMapping("/api/category")
-    public String sendCate(Model model, @RequestParam("cate") String cateName){
-        System.out.println(cateName);
-        model.addAttribute("cateName", cateName);
-        return "schedule/saveForm";
-    }
 
-    //build get all category REST API
+
+    // build get all category REST API
     @GetMapping("/api/categories")
     public List<Category> getAllCategories(){
         return scheduleService.getAllCategories();
     }
 
 
-    //스케줄 상세 화면 랜더링
+
+    // 스케줄 상세 화면 랜더링
     @GetMapping("/details/{id}")
     public String Details(@PathVariable Long id, Model model,@AuthenticationPrincipal PrincipalDetail principal){
 
