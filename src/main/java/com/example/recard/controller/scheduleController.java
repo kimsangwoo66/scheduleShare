@@ -157,6 +157,7 @@ public class scheduleController {
 //        Long cateId = Long.parseLong(cateIdstr);
         model.addAttribute("cateName", cateName);
         model.addAttribute("cateId", cateId);
+
         return "/schedule/saveForm";
     }
 

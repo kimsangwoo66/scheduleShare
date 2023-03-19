@@ -28,11 +28,11 @@
         <div class="container">
 
             <form>
+
             <div class="col-1"><span class="rounded-lg border border-primary text-left"><input type="text" hidden id="category" value="${cateId}"/>${cateName}
             </span></div>
 
              <div></div>
-
 
                         <br/>
                   <div class="form-group col-6">

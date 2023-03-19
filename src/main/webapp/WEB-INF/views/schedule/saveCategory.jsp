@@ -5,13 +5,15 @@
 
     <div class="card justify-content-center text-center m-1">
         <br/>
-          <form method="post" action="/api/category" id="cateForm" name="cateForm" accept-charset="utf-8">
+          <form id="cateForm" name="cateForm" accept-charset="utf-8">
             <div class="card-body">
                 <h2>일정 카테고리를 선택해주세요</h2>
                     <div class="card-detail">
                         <div class="col-sm">
+
                             <input type="hidden" id="cateId" name="cateId" value="${category[0].category_id}" hidden>
                             <button type="submit" id="cateName" name="cateName" value="${category[0].name}" onclick="cateBtn(value)">
+
                                 <img style="width:250px; height:200px;" src="testimg.png" class="col"></img>
                                 <h4>${category[0].name}</h4>
                             </button>
