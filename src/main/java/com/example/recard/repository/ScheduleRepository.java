@@ -15,6 +15,8 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     Page<Schedule> findByMyScheduleAll(Pageable pageable, @Param("user_id") Long userId);
 
 
+    @Query("SELECT s FROM Schedule s WHERE s.category.category_id = :category_id")
+    Page<Schedule> findByCateScheduleAll(Pageable pageable, @Param("category_id") Long categoryId);
 
 
 

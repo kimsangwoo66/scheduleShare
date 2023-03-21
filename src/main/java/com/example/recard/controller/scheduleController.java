@@ -40,7 +40,6 @@ public class scheduleController {
             request.setCharacterEncoding("utf-8");
             String reqCate = request.getParameter("cate");
             model.addAttribute("category", reqCate);
-            System.out.println(reqCate);
             return "/schedule/saveForm";
         }
 
@@ -57,7 +56,7 @@ public class scheduleController {
     public String main(Model model, @PageableDefault(sort = "likeCount", direction = Sort.Direction.DESC) Pageable pageable){
 
         Page<Schedule> schedules = scheduleService.schedulesSelect(pageable);
-        System.out.println(schedules.getContent());
+
         model.addAttribute("schedules", schedules);
 
         return "main";
@@ -80,11 +79,15 @@ public class scheduleController {
         return "schedule/selectCategory";
     }
 
-    @PostMapping("/api/cateSelection")
-    public String cateChoose(@RequestParam("cate") String cateName){
+    //카테고리별 전체 스케줄 정렬 화면 랜더링
+    @GetMapping("/cateSelection/{id}")
+    public String cateChoose(@PathVariable("id") Long categoryId, Model model,
+                             @PageableDefault(sort = "likeCount", direction = Sort.Direction.DESC) Pageable pageable){
 
-        System.out.println(cateName);
+        Page<Schedule> schedules = scheduleService.cateScheduleSelect(pageable, categoryId);
 
+
+        model.addAttribute("schedules", schedules);
         return "mainCategory";
     }
 
@@ -159,15 +162,20 @@ public class scheduleController {
         return "user/myHeartList";
     }
 
+
     @PostMapping("/api/category")
-    public String category(@RequestParam("cateId") String cateId,
-                           @RequestParam("cateName") String cateName,
-                            ModelMap model){
-//
-//        System.out.println("cateId: " + cateIdstr);
-//        System.out.println("cateName: " + cateName);
-//
-//        Long cateId = Long.parseLong(cateIdstr);
+    public String category(@RequestParam("cate") String cate,
+                           ModelMap model){
+
+        String insideStr = cate.substring(cate.indexOf("(") + 1, cate.lastIndexOf(")"));
+        String[] arr = insideStr.split(",");
+        String cateId = arr[0].split("=")[1].trim();
+        String cateName = arr[1].split("=")[1].trim();
+
+        System.out.println("cateObj: " + cate);
+        System.out.println("cateId:" + cateId);
+        System.out.println("cateName: " + cateName);
+
         model.addAttribute("cateName", cateName);
         model.addAttribute("cateId", cateId);
 

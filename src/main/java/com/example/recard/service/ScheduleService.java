@@ -126,6 +126,13 @@ public class ScheduleService {
 
 
     @Transactional(readOnly = true)
+    public Page<Schedule> cateScheduleSelect(Pageable pageable, Long categoryId){
+        Page<Schedule> cateScheduleAll = scheduleRepository.findByCateScheduleAll(pageable, categoryId);
+        return cateScheduleAll;
+    }
+
+
+    @Transactional(readOnly = true)
     public Page<UserLike> heartScheduleSelect(Pageable pageable, Long userId){
         return userLikeRepository.findByUserIdAll(pageable, userId);
 
