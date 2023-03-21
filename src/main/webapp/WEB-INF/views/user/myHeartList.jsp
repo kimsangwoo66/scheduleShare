@@ -14,8 +14,8 @@
                 <div class="card-body">
                     <h4 class="card-title">${schedule.title}</h4>
                             <span class="rounded-lg border border-primary">${userLike.schedule.category.name}</span>
-                            <span class="rounded-lg border border-primary">${userLike.schedule.timeCost}</span>
-                            <span class="rounded-lg border border-primary">${userLike.schedule.moneyCost}</span>
+                            <span class="rounded-lg border border-primary">${userLike.schedule.timeCost}시간</span>
+                            <span class="rounded-lg border border-primary">${userLike.schedule.moneyCost}원</span>
                             <br/>
                             <br/>
                             <i class="fas fa-heart"></i>&nbsp;${userLike.schedule.likeCount}

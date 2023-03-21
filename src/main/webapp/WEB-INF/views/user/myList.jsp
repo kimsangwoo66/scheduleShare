@@ -22,8 +22,8 @@
                 <div class="card-body">
                     <h4 class="card-title">${schedule.title}</h4>
                             <span class="rounded-lg border border-primary">${schedule.category.name}</span>
-                            <span class="rounded-lg border border-primary">${schedule.timeCost}</span>
-                            <span class="rounded-lg border border-primary">${schedule.moneyCost}</span>
+                            <span class="rounded-lg border border-primary">${schedule.timeCost}시간</span>
+                            <span class="rounded-lg border border-primary">${schedule.moneyCost}원</span>
                             <br/>
                             <br/>
                             <i class="fas fa-heart"></i>&nbsp;${schedule.likeCount}
