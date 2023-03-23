@@ -15,10 +15,23 @@
         <h2>스케줄 작성</h2>
         <div class="image-container">
             <div class="insert-img">
-                <form method="POST" onsubmit="return submitForm();" id="imgform">
+                <form onsubmit="return submitForm();" id="imgform">
                     <label class="input-file-button" for="file">사진 추가</label>
                     <input type="file" id="file" name="file" onchange="addFile(this);" multiple  style="display: none;"/>
-                    <div class="file-list"></div>
+                    <div class="file-list">
+
+                       <c:forEach var="sphoto" items="${schedule.schedulePhotos}" varStatus="loop">
+                          <div id="file${loop.index}" class="filebox" value="${sphoto.originFileName}">
+                             <input id="filePath${loop.index}" hidden value="${sphoto.physicalPath}"" style="display:none;">
+                             <p>${sphoto.originFileName}</p>
+                             <a class="delete" onclick="deleteFile(${loop.index});">
+                                <i class="far fa-minus-square" aria-hidden="true"></i>
+                             </a>
+                          </div>
+                       </c:forEach>
+
+
+                    </div>
                 </form>
         </div>
 
@@ -27,36 +40,39 @@
 
         <div class="container">
 
-            <form>
 
-            <div class="col-1"><span class="rounded-lg border border-primary text-left"><input type="text" hidden id="category" value="${cateId}"/>${cateName}
+            <form>
+            <input type="hidden" id="schedule_id" name="schedule_id" value="${schedule.schedule_id}" hidden>
+            <div class="col-1"><span class="rounded-lg border border-primary text-left"><input type="text" hidden id="category" value="${schedule.category.category_id}"/>${schedule.category.name}
             </span></div>
 
              <div></div>
 
                         <br/>
                   <div class="form-group col-6">
-                    <input type="username" class="form-control" placeholder="제목을 입력하세요" id="title">
+                    <input type="username" class="form-control"  id="title" value="${schedule.title}">
                   </div>
 
                   <div class="form-group col-6">
-                    <textarea rows="5" id="content" placeholder="내용을 입력하세요" style="width: 100%;"></textarea>
+                    <textarea rows="5" id="content"  style="width: 100%;">${schedule.content}</textarea>
                   </div>
 
                  <div class="form-group col-8">
                     <label>소요시간</label>
-                    <input type="number" name="timeCost" id="timeCost">
+                    <input type="number" name="timeCost" id="timeCost" value="${schedule.timeCost}">
                     <br/>
                     <label>총비용</label>
-                    <input type="number" name="moneyCost" id="moneyCost">
+                    <input type="number" name="moneyCost" id="moneyCost" value="${schedule.moneyCost}">
                  </div>
             </form>
                 <div class="container text-right">
-                    <button onclick="submitForm()" id="sbtn-save" class="my-button text-center">등록 완료</button>
+
+                    <button onclick="submitForm()" id="sbtn-save" class="my-button text-center">수정 완료</button>
+
                 </div>
         </div>
     </div>
 
 
-<script src="/js/schedule.js"></script>
+<script src="/js/scheduleUpdate.js"></script>
 <%@ include file="../layout/footer.jsp" %>

@@ -94,21 +94,80 @@ public class ScheduleService {
     }
 
     @Transactional
-    public void schedulePhotoSave(String uploadPath, String fileName, Schedule schedule){
-        String fullUploadPath = uploadPath + fileName;
+    public Schedule ScheduleFinalUpdate(ScheduleDto scheduleDto){
 
+        Optional<Schedule> scheduleObj = scheduleRepository.findById(scheduleDto.getSchedule_id());
+
+        //optional은 .get()으로 객체를 가져올 수 있음
+        Optional<Category> category = categoryRepository.findById(scheduleDto.getCategory().getCategory_id());
+
+        //scheduleDto의 id로 schedule리포지토리에서 호출
+
+        Schedule scheduleInfo = scheduleObj.get();
+        scheduleInfo.setTitle(scheduleDto.getTitle());
+        scheduleInfo.setContent(scheduleDto.getContent());
+        scheduleInfo.setMoneyCost(scheduleDto.getMoneyCost());
+        scheduleInfo.setTimeCost(scheduleDto.getTimeCost());
+        scheduleInfo.setCategory(category.get());
+        // 호출된 값으로 변경 후 schedule에 다시 save
+
+        Schedule schedule = scheduleRepository.save(scheduleInfo);
+
+
+        return schedule;
+    }
+
+    @Transactional
+    public void schedulePhotoSave(String uploadPath, String fileName, String orginFileName, Schedule schedule){
 
 
         SchedulePhoto schedulePhoto = SchedulePhoto.builder()
-                .physicalPath(fullUploadPath)
+                .physicalPath(uploadPath)
                 .fileName(fileName)
+                .originFileName(orginFileName)
                 .schedule(schedule)
                 .build();
-
-
         schedulePhotoRepository.save(schedulePhoto);
 
     }
+
+
+    @Transactional
+    public void schedulePhotoUpdate(String uploadPath, String fileName, String orginFileName, Schedule schedule){
+
+
+        SchedulePhoto schedulePhoto = SchedulePhoto.builder()
+                .physicalPath(uploadPath)
+                .fileName(fileName)
+                .originFileName(orginFileName)
+                .schedule(schedule)
+                .build();
+        schedulePhotoRepository.save(schedulePhoto);
+
+    }
+
+    @Transactional
+    public List<SchedulePhoto> findAllSphoto(ScheduleDto scheduleDto){
+        Long scheduleId = scheduleDto.getSchedule_id();
+        List<SchedulePhoto> schedulePhotos = schedulePhotoRepository.findAllByScheduleId(scheduleId);
+
+        return schedulePhotos;
+    }
+
+    @Transactional
+    public List<SchedulePhoto> findAllSphoto(Long Id){
+        List<SchedulePhoto> schedulePhotos = schedulePhotoRepository.findAllByScheduleId(Id);
+
+        return schedulePhotos;
+    }
+
+    @Transactional
+    public void deleteSphoto(Long sphtoId){
+        schedulePhotoRepository.deleteById(sphtoId);
+    }
+
+
+
 
     @Transactional(readOnly = true)
     public Page<Schedule> schedulesSelect(Pageable pageable){

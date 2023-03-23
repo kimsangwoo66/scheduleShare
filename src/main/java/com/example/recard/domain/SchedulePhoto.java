@@ -25,6 +25,9 @@ public class SchedulePhoto {
     @Column(nullable = false, length = 200)
     private String fileName;
 
+    @Column(nullable = false, length = 200)
+    private String originFileName;
+
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;

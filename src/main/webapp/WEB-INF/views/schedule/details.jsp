@@ -4,14 +4,16 @@
 
         <div class="card justify-content-center text-center m-1">
 
-
+           <c:if test="${schedule.user.user_id == principal.user.user_id}">
+                <span class="d-flex flex-row ml-5">
+               <a href="/schedules/${schedule.schedule_id}" class="btn btn-warning">수정</a>
+               <button id="btn-delete" class="btn btn-danger ml-3">삭제</button>
+               </span>
+           </c:if>
         <div class="card-body row">
 
-
-
-
-
             <div class="container col-6">
+
 
                 <section>
                       <div>

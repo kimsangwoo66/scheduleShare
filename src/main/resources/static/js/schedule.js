@@ -158,36 +158,7 @@ let index = {
     },
 
 
-//    save:function(){
-//
-//        let data = {
-//            category: {
-//            category_id: parseInt($("#category").val())
-//            },
-//            title: $("#title").val(),
-//            content: $("#content").val(),
-//            timeCost: parseInt($("#timeCost").val()),
-//            moneyCost: parseInt($("#moneyCost").val())
-//        };
-//        console.log(JSON.stringify(data))
-//
-//        $.ajax({
-//            type: "POST",
-//            url: "api/schedule",
-//            data: JSON.stringify(data),
-//            contentType: "application/json; charset=utf-8",
-//            dataType: "json"
-//
-//        }).done(function(res){
-//            alert("등록 완료");
-//            location.href = "/";
-//        }).fail(function(error){
-//            alert(JSON.stringify(error));
-//        });
-//
-//    }
-
 }
 
-//index.init();
+
 

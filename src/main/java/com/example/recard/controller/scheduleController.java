@@ -70,6 +70,16 @@ public class scheduleController {
       return "schedule/saveForm";
     }
 
+    //스케줄 수정 화면 랜더링
+    @GetMapping("/schedules/{id}")
+    public String SchedulesEdit(@PathVariable("id") Long scheduleId, Model model){
+        Schedule schedule = scheduleService.scheduleDetail(scheduleId);
+        //System.out.println(schedule.get);
+        model.addAttribute("schedule", schedule);
+
+        return "schedule/updateForm";
+    }
+
     //카테고리 분류 선택 화면
     @GetMapping("/cateSelection")
     public String choiceCategory(Model model){
@@ -135,6 +145,7 @@ public class scheduleController {
             model.addAttribute("schedule", scheduleService.scheduleDetail(id));
 
             UserLike userLike = scheduleService.likeYn(id, principal.getUser());
+            model.addAttribute("principal", principal);
             model.addAttribute("userlike", userLike);
 
         }
