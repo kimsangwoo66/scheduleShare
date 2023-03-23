@@ -15,7 +15,7 @@ padding:10px;
           <form id="cateForm" name="cateForm" accept-charset="utf-8">
             <div class="card-body">
                 <h2>일정 카테고리를 선택해주세요</h2>
-                <br>
+                <br><br>
                     <div class="card-detail">
                         <div class="col-sm" >
 
