@@ -15,12 +15,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -107,14 +103,13 @@ public class ScheduleApiController {
         //기존에 업로드된 스케줄이미지 사진 전부 제거
         List<SchedulePhoto> allSphoto = scheduleService.findAllSphoto(scheduleDto);
         for(SchedulePhoto sphotoInfo: allSphoto){
-            System.out.println("현재 스케줄에 저장된 이미지들: " + sphotoInfo.getFileName());
+
 
             try{
-
                 File file = new File(uploadPath + sphotoInfo.getFileName());
                 file.delete();
                 scheduleService.deleteSphoto(sphotoInfo.getSphoto_id());
-                System.out.println("파일 정상 삭제 확인");
+
             }catch(IllegalStateException e){
                 e.printStackTrace();
             }
@@ -149,14 +144,30 @@ public class ScheduleApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
+    //스케줄 삭제 api
+    @DeleteMapping("/api/schedule/{scheduleId}")
+    public ResponseDto<Integer> scheduleDelete(@PathVariable("scheduleId") Long scheduleId){
 
+
+        List<SchedulePhoto> allSphoto = scheduleService.findAllSphoto(scheduleId);
+        for(SchedulePhoto sphotoInfo : allSphoto){
+            try{
+                File file = new File(uploadPath + sphotoInfo.getFileName());
+                file.delete();
+            }catch(IllegalStateException e){
+                e.printStackTrace();
+            }
+        }
+
+        scheduleService.deleteSchedule(scheduleId);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    //좋아요 api
     @PostMapping("/api/likecnt")
     @ResponseBody
     public ResponseDto<Integer> likeCnt(Long schedule_id, @AuthenticationPrincipal PrincipalDetail principal)  {
 
-        Long user_id = principal.getUser().getUser_id();
-        System.out.println("스케줄아이디: " + schedule_id);
-        System.out.println("유저아이디: " + user_id);
         scheduleService.likeCheck(schedule_id, principal.getUser());
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }

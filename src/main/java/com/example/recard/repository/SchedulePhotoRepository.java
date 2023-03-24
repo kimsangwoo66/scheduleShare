@@ -2,6 +2,7 @@ package com.example.recard.repository;
 
 import com.example.recard.domain.SchedulePhoto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -13,4 +14,7 @@ public interface SchedulePhotoRepository extends JpaRepository<SchedulePhoto, Lo
     @Query("SELECT sp FROM SchedulePhoto sp WHERE sp.schedule.schedule_id = :scheduleId")
     List<SchedulePhoto> findAllByScheduleId(@Param("scheduleId") Long scheduleId);
 
+    @Modifying
+    @Query("DELETE FROM SchedulePhoto sp WHERE sp.schedule.schedule_id = :scheduleId")
+    void deleteSphotoByScheduleId(@Param("scheduleId") Long scheduleId);
 }

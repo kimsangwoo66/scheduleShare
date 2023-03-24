@@ -164,6 +164,8 @@ public class ScheduleService {
     @Transactional
     public void deleteSphoto(Long sphtoId){
         schedulePhotoRepository.deleteById(sphtoId);
+
+
     }
 
 
@@ -206,6 +208,16 @@ public class ScheduleService {
                 });
 
     }
+
+    @Transactional
+    public void deleteSchedule(Long scheduleId){
+        schedulePhotoRepository.deleteSphotoByScheduleId(scheduleId);
+        userLikeRepository.deleteUserLikeByScheduleId(scheduleId);
+        scheduleRepository.deleteScheduleById(scheduleId);
+
+    }
+
+
 
     @Transactional
     public UserLike likeYn(Long scheduleId, User user){

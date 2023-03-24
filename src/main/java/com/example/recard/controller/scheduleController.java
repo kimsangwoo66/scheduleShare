@@ -80,7 +80,7 @@ public class scheduleController {
         return "schedule/updateForm";
     }
 
-    //카테고리 분류 선택 화면
+    //카테고리 분류 선택 화면 랜더링
     @GetMapping("/cateSelection")
     public String choiceCategory(Model model){
         List<Category> categoryList = getAllCategories();
@@ -153,7 +153,7 @@ public class scheduleController {
         return "schedule/details";
     }
 
-    //마이스케줄
+    //마이 스케줄함 랜더링
     @GetMapping("/myList")
     public String MyList(Model model, @PageableDefault(size = 12,sort = "likeCount", direction = Sort.Direction.DESC)Pageable pageable,
                          @AuthenticationPrincipal PrincipalDetail principal){
@@ -163,7 +163,7 @@ public class scheduleController {
         return "user/myList";
     }
 
-    //하트 스케줄함
+    //하트 스케줄함 랜더링
     @GetMapping("/myHeartList")
     public String MyHeartList(Model model, @PageableDefault(size = 12,sort = "schedule.likeCount", direction = Sort.Direction.DESC)Pageable pageable,
                               @AuthenticationPrincipal PrincipalDetail principal){
@@ -173,7 +173,7 @@ public class scheduleController {
         return "user/myHeartList";
     }
 
-
+    //스케줄 등록화면 랜더링
     @PostMapping("/api/category")
     public String category(@RequestParam("cate") String cate,
                            ModelMap model){

@@ -98,3 +98,21 @@ function hClick() {
 
 
 }
+
+function btnDelete(value){
+    console.log("id:" + value);
+
+    $.ajax({
+               type:"DELETE",
+               url:"/api/schedule/"+value,
+               dataType:"json"
+
+           }).done(function(resp){
+                alert("삭제가 완료되었습니다.");
+                location.href="/";
+           }).fail(function(error){
+                //회원가입에 실패하면 실행하는 함수
+                alert(JSON.stringify(error));
+
+           });
+}
