@@ -10,15 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -26,30 +23,6 @@ public class scheduleController {
     @Autowired
     ScheduleService scheduleService;
 
-    //build get all schedule REST API
-    @GetMapping("/api/schedules")
-    public List<Schedule> getAllSchedules(){
-        return scheduleService.getAllSchedules();
-    }
-
-    @RequestMapping("/schedules")
-        public String view(@ModelAttribute("schedule") Schedule schedule, ModelMap model, HttpServletRequest request)
-//    public String view(@RequestParam("cate") String cate, ModelMap model, HttpServletRequest request)
-
-            throws Exception{
-            request.setCharacterEncoding("utf-8");
-            String reqCate = request.getParameter("cate");
-            model.addAttribute("category", reqCate);
-            return "/schedule/saveForm";
-        }
-
-
-    //build get all schedule by id REST API
-    // http://localhost:8080/api/schedules/1
-    @GetMapping("/api/schedules/{id}")
-    public ResponseEntity<Schedule> getScheduleById(@PathVariable("id") long scheduleId){
-        return new ResponseEntity<Schedule>(scheduleService.scheduleGetId(scheduleId), HttpStatus.OK);
-    }
 
     // 메인화면 랜더링
     @GetMapping("/")
@@ -63,7 +36,6 @@ public class scheduleController {
     }
 
 
-
     //스케줄 등록 화면 랜더링
     @GetMapping("/schedules")
     public String Schedules(){
@@ -74,7 +46,7 @@ public class scheduleController {
     @GetMapping("/schedules/{id}")
     public String SchedulesEdit(@PathVariable("id") Long scheduleId, Model model){
         Schedule schedule = scheduleService.scheduleDetail(scheduleId);
-        //System.out.println(schedule.get);
+
         model.addAttribute("schedule", schedule);
 
         return "schedule/updateForm";
@@ -111,18 +83,14 @@ public class scheduleController {
 
     }
 
-
+    //스케줄등록(카테고리 선택) 랜더링
     @GetMapping("/category")
     public String Category(Model model){
         List<Category> categoryList = getAllCategories();
-        for(Category category : categoryList){
-            System.out.println("category["+ category + "]");
-        }
+
         model.addAttribute("category", categoryList);
         return "schedule/saveCategory";
     }
-
-
 
     // build get all category REST API
     @GetMapping("/api/categories")
@@ -173,7 +141,7 @@ public class scheduleController {
         return "user/myHeartList";
     }
 
-    //스케줄 등록화면 랜더링
+    //선택한 카테고리로 스케줄 등록화면 랜더링
     @PostMapping("/api/category")
     public String category(@RequestParam("cate") String cate,
                            ModelMap model){
@@ -183,9 +151,6 @@ public class scheduleController {
         String cateId = arr[0].split("=")[1].trim();
         String cateName = arr[1].split("=")[1].trim();
 
-        System.out.println("cateObj: " + cate);
-        System.out.println("cateId:" + cateId);
-        System.out.println("cateName: " + cateName);
 
         model.addAttribute("cateName", cateName);
         model.addAttribute("cateId", cateId);

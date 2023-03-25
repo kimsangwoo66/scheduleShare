@@ -81,11 +81,6 @@ public class UserService {
         Long chIntId = profilePhoto.getProfile_id();
         profilePhotoRepository.deleteById(chIntId);
 
-//        // 영속화
-//        ProfilePhoto persistence = profilePhotoRepository.findById(chIntId).orElseThrow(()->{
-//            return new IllegalArgumentException("사진아이디 찾기 실패");
-//        });
-
 
     }
 

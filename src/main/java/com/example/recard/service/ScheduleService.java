@@ -32,10 +32,6 @@ public class ScheduleService {
         return categoryRepository.findAll();
     }
 
-    public Category categoryGetId(long id){
-        return categoryRepository.findById(id).orElseThrow();
-    }
-
 
     //스케줄 등록과 스케줄 카테고리 등록 구분해야 하기 떄문에
     //scheduleSave -> scheduleCategorySave로 함수 명칭 변경
@@ -43,9 +39,6 @@ public class ScheduleService {
         return scheduleRepository.save(schedule);
     }
 
-    public List<Schedule> getAllSchedules() {
-        return scheduleRepository.findAll();
-    }
 
     public Schedule scheduleUpdate(Schedule schedule, long id){
         // check whether schedule with given id exist in DB or not
@@ -59,15 +52,6 @@ public class ScheduleService {
         return existingSchedule;
     }
 
-    public Schedule scheduleGetId(long id){
-//        Optional<Schedule> schedule = scheduleRepository.findById(id);
-//        if(schedule.isPresent()){
-//            return schedule.get();
-//        } else{
-//            System.out.println("@@@@@@@@@@@ ERROR");
-//        }
-        return scheduleRepository.findById(id).orElseThrow();
-    }
 
     @Transactional
     public Schedule ScheduleFinalSave(ScheduleDto scheduleDto, User user){
@@ -224,7 +208,7 @@ public class ScheduleService {
         Optional<UserLike> userObj = userLikeRepository.findByScheduleIdAndUserId(scheduleId, user.getUser_id());
         if(userObj.isEmpty())
         {
-            System.out.println("userObj null 확인");
+
             return null;
         }
         UserLike userLike = userObj.get();
@@ -254,7 +238,7 @@ public class ScheduleService {
 
             likeUp = schedule.get().getLikeCount() + 1;
 
-            System.out.println("증가된결과 하트 개수:" + likeUp);
+
 
             schedule.get().setLikeCount(likeUp);
             scheduleRepository.save(schedule.get());
@@ -267,7 +251,7 @@ public class ScheduleService {
             //해당 scheduleId 객체의 likeCount 1 감소
             likeUp = schedule.get().getLikeCount() - 1;
 
-            System.out.println("감소된 결과 하트 개수:" + likeUp);
+
             schedule.get().setLikeCount(likeUp);
             scheduleRepository.save(schedule.get());
 
