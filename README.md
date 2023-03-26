@@ -73,15 +73,44 @@
 - 하트 추가
 - 하트 감소
 
+
+
 #### 마이 스케줄함 페이지
 - 스케줄 페이징
 
 #### 하트 스케줄함 페이지
 - 스케줄 페이징
 
-## 회고
-+ https://deep-longship-e47.notion.site/Ajax-2-contenttype-postmapping-e125191cc3934f44848fac74b19d09fa
-+ https://deep-longship-e47.notion.site/setter-builder-cecaa8afce294c2d9666de2e64790b6d
+#### 엔터티 설계
+![img_1.png](img_1.png)
+
+## 📝 회고
+Ajax로 동시에 2개의 contenttype 객체 postmapping으로 요청
+* https://deep-longship-e47.notion.site/Ajax-2-contenttype-postmapping-e125191cc3934f44848fac74b19d09fa
+
+builder 패턴 사용
+* https://deep-longship-e47.notion.site/builder-cecaa8afce294c2d9666de2e64790b6d
+
+hibernate 객체 참조 에러
++ https://deep-longship-e47.notion.site/hibernate-397db2d4add1427d8325b18a6a9fdb1c
+
+schedule, schedulePhoto 엔터티 연관관계 수정 후 스택 오버플로우 에러
++ https://deep-longship-e47.notion.site/schedule-schedulePhoto-ccf1cabdf93f4a589c1b13a0a1a8a114
+
+메인화면 케러셀 슬라이드 사용
++ https://deep-longship-e47.notion.site/71ecaadac9464fadbfd7fb183c6c9b48
+
+jpa insert 할때 default 값 적용 불가
++ https://deep-longship-e47.notion.site/jpa-insert-default-2081ad9d198747bb9a95e24e8bc1d2d7
+
+비 로그인일경우 ajax의 post요청시 로그인페이지로 리다이렉트 불가
++ https://deep-longship-e47.notion.site/ajax-post-14b56951278c42f295c5b6b0924dee5a
+
+스케줄 수정 구현
++ https://deep-longship-e47.notion.site/c5550aaea3804bc8927e69f6a0a31956
+
+스케줄 삭제 구현
++ https://deep-longship-e47.notion.site/7b339a18c8bb4d9085f5029a2b7979cf
 
 
 

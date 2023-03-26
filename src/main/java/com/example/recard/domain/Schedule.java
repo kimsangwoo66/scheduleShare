@@ -46,8 +46,6 @@ public class Schedule {
     @UpdateTimestamp
     private Timestamp updateAt;
 
-    private Timestamp deleteAt;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
