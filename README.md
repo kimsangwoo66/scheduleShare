@@ -11,9 +11,11 @@
 
 ## 🧑‍🤝‍🧑 팀 멤버
  🧑‍💻 김상우(kimsangwoo66)
++ 엔터티 설계, 통합 및 형상관리, 로그인, 회원가입, 마이페이지, 메인페이지, 스케줄등록, 스케줄 상세, 마이 스케줄함 페이지, 하트 스케줄함 페이지
 
 
  👩‍💻 백소영(Soiiii)
++ 스케줄 등록 - 카테고리 선택, db 테이블 설계, wbs 관리 
 <br/>
 
 ## 📚 기술 스택
@@ -77,7 +79,9 @@
 #### 하트 스케줄함 페이지
 - 스케줄 페이징
 
-
+## 회고
++ https://deep-longship-e47.notion.site/Ajax-2-contenttype-postmapping-e125191cc3934f44848fac74b19d09fa
++ https://deep-longship-e47.notion.site/setter-builder-cecaa8afce294c2d9666de2e64790b6d
 
 
 
