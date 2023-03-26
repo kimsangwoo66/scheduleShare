@@ -134,7 +134,7 @@ function submitForm() {
     cache: false,
     headers: { "cache-control": "no-cache", pragma: "no-cache" },
     success: function () {
-        console.log("파일 업로드 성공");
+
         alert("등록 완료");
         location.href = "/";
 

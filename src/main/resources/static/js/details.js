@@ -50,8 +50,9 @@ function hClick() {
                     console.log(textStatus);
                     console.log(errorThrown);
 
-                    //서버별 경로 코드 수정 필요
-                    document.location.href = "http://localhost:8080/auth/login"
+
+                    document.location.href = "/auth/login";
+
 
               }
 
@@ -87,7 +88,8 @@ function hClick() {
                     console.log(errorThrown);
                     // AJAX 요청이 실패했을 때 실행할 코드
                     alert("로그인이 필요합니다.");
-                    document.location.href = "http://localhost:8080/auth/login"
+                     document.location.href = "/auth/login";
+
 
               }
 

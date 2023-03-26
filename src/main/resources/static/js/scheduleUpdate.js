@@ -23,6 +23,7 @@ function addFile(obj) {
   // 첨부파일 개수 확인
   if (curFileCnt > remainFileCnt) {
     alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+    location.reload();
   }
 
   for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {

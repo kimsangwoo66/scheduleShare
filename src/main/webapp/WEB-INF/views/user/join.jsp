@@ -57,7 +57,7 @@
         </div>
     <span>이미 아이디가 있으신가요?</span>
     &nbsp; &nbsp; &nbsp; &nbsp;
-    <a href="https://www.w3schools.com">로그인</a>
+    <a href="/auth/login">로그인</a>
     </div>
     </div>
 <script src="/js/user.js"></script>

@@ -3,7 +3,7 @@
 ## 🖥 프로젝트 소개
 주말 스케줄 공유 서비스 프로젝트 입니다.
 
-유툽링크:
+시연 영상: https://www.youtube.com/watch?v=v8lKyQWaRMg
 <br/>
 
 ## 🗓 개발 기간
@@ -18,28 +18,87 @@
 
 ## 📚 기술 스택
 
+#### 프론트 엔드
++ Html
+
++ Css
+
++ JavaScript(Jquery)
+
++ Jsp
+
+
+#### 백엔드
++ Spring Boot
+
++ Spring Data JPA
+
++ Spring Security
+
++ Mysql 
+
 ## 🛠 개발 환경
 
++ IntelliJ
++ Mysql WorkBench
+
 ## ▶ 주요 기능
+
+#### 로그인
+- 아이디 & 비밀번호 검증
+- 로그인 시 쿠키 및 세션 생성
+
+#### 회원가입
+- 아이디 중복 체크
+- 닉네임 중복 체크
+- 비밀번호 확인
+
+#### 마이 페이지
+- 마이 이미지 수정
+
+#### 메인 페이지
+- 스케줄 페이징
+- 스케줄 슬라이드
+
+
+#### 스케줄 등록
+- 카테고리 선택
+- 등록 완료
+
+#### 스케줄 상세
+- 스케줄 수정
+- 스케줄 삭제
+- 하트 추가
+- 하트 감소
+
+#### 마이 스케줄함 페이지
+- 스케줄 페이징
+
+#### 하트 스케줄함 페이지
+- 스케줄 페이징
+
+
+
+
+
+<br/>
 
 
 ## config
 
 서버에 설정값을 추가해줘야 합니다.
 
-#### [application.properties]
+#### [Application.properties]
 ####server external path setting .. for upload imgs##
 
 resource.path=" 이미지를 저장할 서버 경로 "
+
 img.path=/img/**
 
 
-#### [details.js] ####
-경로 수정 필요
-document.location.href = "http://localhost:8080/auth/login"
 
 
-#### [mysql]
+#### [Mysql]
 DB에 수동으로 직접 값 insert 필요
 
 INSERT INTO recard.Category (category_id,name) VALUES
