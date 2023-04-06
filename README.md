@@ -107,8 +107,6 @@ jpa insert 할때 default 값 적용 불가
 spring secuirty로 로그인 하여 JSSESSION 쿠키 생성
 + https://deep-longship-e47.notion.site/spring-secuirty-JSSESSION-768ef20be40e4c7381802696102c52f9
 
-비 로그인일경우 ajax의 post요청시 로그인페이지로 리다이렉트 불가
-+ https://deep-longship-e47.notion.site/ajax-post-14b56951278c42f295c5b6b0924dee5a
 
 스케줄 수정 구현
 + https://deep-longship-e47.notion.site/c5550aaea3804bc8927e69f6a0a31956
