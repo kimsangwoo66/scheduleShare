@@ -109,7 +109,7 @@ spring secuirty로 로그인 하여 JSSESSION 쿠키 생성
 
 
 스케줄 수정 구현
-+ https://deep-longship-e47.notion.site/c5550aaea3804bc8927e69f6a0a31956
++ https://deep-longship-e47.notion.site/1e16a73e90664978a7102b1b6eccc6cc
 
 스케줄 삭제 구현
 + https://deep-longship-e47.notion.site/7b339a18c8bb4d9085f5029a2b7979cf
