@@ -92,9 +92,6 @@ Ajax로 동시에 2개의 contenttype 객체 postmapping으로 요청
 builder 패턴 사용
 * https://deep-longship-e47.notion.site/builder-cecaa8afce294c2d9666de2e64790b6d
 
-hibernate 객체 참조 에러
-+ https://deep-longship-e47.notion.site/hibernate-397db2d4add1427d8325b18a6a9fdb1c
-
 schedule, schedulePhoto 엔터티 연관관계 수정 후 스택 오버플로우 에러
 + https://deep-longship-e47.notion.site/schedule-schedulePhoto-ccf1cabdf93f4a589c1b13a0a1a8a114
 
