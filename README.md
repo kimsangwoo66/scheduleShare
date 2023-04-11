@@ -130,9 +130,11 @@ resource.path=" 이미지를 저장할 서버 경로 "
 img.path=/img/**
 
 ###개별 파일의 최대 허용 크기를 제한###
+
 spring.servlet.multipart.maxFileSize=2MB
 
 ###요청의 총 허용 크기를 제한###
+
 spring.servlet.multipart.maxRequestSize=7MB
 
 
